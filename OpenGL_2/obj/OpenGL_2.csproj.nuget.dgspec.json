@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\OpenGL_2.csproj": {}
+    "C:\\Users\\labyss\\source\\repos\\OpenGL_2\\OpenGL_2\\OpenGL_2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\OpenGL_2.csproj": {
+    "C:\\Users\\labyss\\source\\repos\\OpenGL_2\\OpenGL_2\\OpenGL_2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\OpenGL_2.csproj",
+        "projectUniqueName": "C:\\Users\\labyss\\source\\repos\\OpenGL_2\\OpenGL_2\\OpenGL_2.csproj",
         "projectName": "OpenGL_2",
-        "projectPath": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\OpenGL_2.csproj",
+        "projectPath": "C:\\Users\\labyss\\source\\repos\\OpenGL_2\\OpenGL_2\\OpenGL_2.csproj",
         "packagesPath": "C:\\Users\\labyss\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\obj\\",
+        "outputPath": "C:\\Users\\labyss\\source\\repos\\OpenGL_2\\OpenGL_2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

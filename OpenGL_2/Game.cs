@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,22 +17,32 @@ namespace OpenGL_2
     {
         int VertexBufferObject;
 
+        int VertexArrayObject;
+
+        int ElementBufferObject;
+
         Shader shader;
 
         float[] vertices = {
-            -0.5f, -0.5f, 0.0f, //Bottom-left vertex
-             0.5f, -0.5f, 0.0f, //Bottom-right vertex
-             0.0f,  0.5f, 0.0f  //Top vertex
+             0.5f,  0.5f, 0.0f,  // top right
+             0.5f, -0.5f, 0.0f,  // bottom right
+            -0.5f, -0.5f, 0.0f,  // bottom left
+            -0.5f,  0.5f, 0.0f   // top left
         };
+
+
+        uint[] indices = {  // note that we start from 0!
+            0, 1, 3,   // first triangle
+            1, 2, 3    // second triangle
+        };
+
 
         public Game(int width, int height, string title) : base(GameWindowSettings.Default,
             new NativeWindowSettings() { ClientSize = (width, height), Title = title }) { } // Vs жаловался на просто Size
 
-        int VertexArrayObject;
         protected override void OnLoad()
         {
             base.OnLoad();
-
 
             //working with VBO
             VertexBufferObject = GL.GenBuffer();
@@ -41,11 +52,15 @@ namespace OpenGL_2
             // creating & working with VAO
             VertexArrayObject = GL.GenVertexArray();
             GL.BindVertexArray(VertexArrayObject);
-
+            
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
             GL.EnableVertexAttribArray(0);
 
-           
+            // wrking with EBO
+            ElementBufferObject = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, ElementBufferObject);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
+
             // creating a shader
             shader = new Shader("../../../Shaders/shader.vert", "../../../Shaders/shader.frag");
             shader.Use();
@@ -83,10 +98,10 @@ namespace OpenGL_2
 
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            //Code goes here.
-            shader.Use();
+            shader.Use(); /// почему пересиановка этой штуки вниз ничего не ломает?
             GL.BindVertexArray(VertexArrayObject);
-            GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+            GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
+            GL.BindVertexArray(0);
             SwapBuffers();
         }
 
