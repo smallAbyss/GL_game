@@ -13,7 +13,7 @@ namespace OpenGL_2
 {
     public class Shader
     {
-        int Handle; // публичный??
+        public readonly int Handle; 
         private bool disposedValue = false;
 
         public Shader(string vertexPath, string fragmentPath)

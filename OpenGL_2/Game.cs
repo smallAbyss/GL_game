@@ -5,6 +5,7 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Reflection.Metadata;
@@ -22,6 +23,8 @@ namespace OpenGL_2
         int ElementBufferObject;
 
         Shader shader;
+
+        private Stopwatch timer;
 
         float[] vertices = {
              0.5f,  0.5f, 0.0f,  // top right
@@ -68,6 +71,10 @@ namespace OpenGL_2
             // set backroundColor
             GL.ClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
+            // timers
+            timer = new Stopwatch();
+            timer.Start();
+
         }
 
         protected override void OnUnload()
@@ -98,10 +105,24 @@ namespace OpenGL_2
 
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            shader.Use(); /// почему пересиановка этой штуки вниз ничего не ломает?
+            shader.Use(); /// почему перестановка этой штуки вниз ничего не ломала, до появления таймера
+
+            // update the uniform color
+            double timeValue = timer.Elapsed.TotalSeconds;
+            float greenValue = (float)Math.Sin(timeValue) / 2.0f + 0.5f;
+            int vertexColorLocation = GL.GetUniformLocation(shader.Handle, "ourColor");
+            GL.Uniform4(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+
+            /// binding VAO
             GL.BindVertexArray(VertexArrayObject);
+
+            // drawing
             GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
+           
+            // unbinding VAO
             GL.BindVertexArray(0);
+
+            // swap
             SwapBuffers();
         }
 
