@@ -26,17 +26,18 @@ namespace OpenGL_2
 
         private Stopwatch timer;
 
-        float[] vertices = {
-             0.5f,  0.5f, 0.0f,  // top right
-             0.5f, -0.5f, 0.0f,  // bottom right
-            -0.5f, -0.5f, 0.0f,  // bottom left
-            -0.5f,  0.5f, 0.0f   // top left
+        private readonly float[] vertices =
+        {
+            // positions         // colors
+             0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
+            -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
+             0.0f,  0.5f, 0.0f,  1.0f, 0.0f, 0.0f    // top 
         };
 
 
-        uint[] indices = {  // note that we start from 0!
-            0, 1, 3,   // first triangle
-            1, 2, 3    // second triangle
+        private readonly uint[] indices = {  // note that we start from 0!
+            0, 1, 2   /// мне было лень убирать индексы, а ещё интересная штука: если здесь указать элементы > vertices.size, то оно не ломается
+                       /// ну точнее как.. проверь в общем
         };
 
 
@@ -55,11 +56,15 @@ namespace OpenGL_2
             // creating & working with VAO
             VertexArrayObject = GL.GenVertexArray();
             GL.BindVertexArray(VertexArrayObject);
-            
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
+
+            // vertex attributes
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 0);
             GL.EnableVertexAttribArray(0);
 
-            // wrking with EBO
+            GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
+            GL.EnableVertexAttribArray(1);
+
+            // working with EBO
             ElementBufferObject = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, ElementBufferObject);
             GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
@@ -106,12 +111,6 @@ namespace OpenGL_2
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
             shader.Use(); /// почему перестановка этой штуки вниз ничего не ломала, до появления таймера
-
-            // update the uniform color
-            double timeValue = timer.Elapsed.TotalSeconds;
-            float greenValue = (float)Math.Sin(timeValue) / 2.0f + 0.5f;
-            int vertexColorLocation = GL.GetUniformLocation(shader.Handle, "ourColor");
-            GL.Uniform4(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 
             /// binding VAO
             GL.BindVertexArray(VertexArrayObject);
