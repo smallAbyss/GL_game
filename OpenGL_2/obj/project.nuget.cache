@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WzSuJAKG/iA=",
+  "dgSpecHash": "1W01NwMdo+s=",
   "success": true,
   "projectFilePath": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\OpenGL_2.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\labyss\\.nuget\\packages\\opentk.windowing.common\\4.9.4\\opentk.windowing.common.4.9.4.nupkg.sha512",
     "C:\\Users\\labyss\\.nuget\\packages\\opentk.windowing.desktop\\4.9.4\\opentk.windowing.desktop.4.9.4.nupkg.sha512",
     "C:\\Users\\labyss\\.nuget\\packages\\opentk.windowing.graphicslibraryframework\\4.9.4\\opentk.windowing.graphicslibraryframework.4.9.4.nupkg.sha512",
+    "C:\\Users\\labyss\\.nuget\\packages\\stbimagesharp\\2.30.15\\stbimagesharp.2.30.15.nupkg.sha512",
     "C:\\Users\\labyss\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []

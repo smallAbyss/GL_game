@@ -59,3 +59,4 @@ C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\obj\Debug\net8.0\refint\OpenGL
 C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\obj\Debug\net8.0\OpenGL_2.pdb
 C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\obj\Debug\net8.0\OpenGL_2.genruntimeconfig.cache
 C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\obj\Debug\net8.0\ref\OpenGL_2.dll
+C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\bin\Debug\net8.0\StbImageSharp.dll
