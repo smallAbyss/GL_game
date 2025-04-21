@@ -4,10 +4,11 @@ layout (location = 1) in vec2 aTexCoord; // the color variable has attribute pos
   
 out vec2 texCoord;
 
+uniform mat4 transform;
+
 void main()
 {
-	texCoord = aTexCoord;
+	texCoord = vec2(aTexCoord.x, aTexCoord.y);
 
-    gl_Position = vec4(aPos, 1.0);
+    gl_Position = vec4(aPos, 1.0)* transform;;
 }   
-

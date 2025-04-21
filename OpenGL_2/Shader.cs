@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using OpenTK.Graphics.OpenGL4;
+using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
@@ -94,7 +95,18 @@ namespace OpenGL_2
                 Console.WriteLine("GPU Resource leak! Did you forget to call Dispose()?");
             }
         }
+        public void SetMatrix4(string name, Matrix4 matrix)
+        {
+            GL.UseProgram(Handle);
 
+            GL.UniformMatrix4(GL.GetUniformLocation(Handle, "transform"), true, ref matrix);
+        }
+
+        public int GetAttribLocation(string attribName)
+        {
+            return GL.GetAttribLocation(Handle, attribName);
+        }
+       
         public void Dispose()
         {
             Dispose(true);

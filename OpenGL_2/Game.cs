@@ -1,4 +1,5 @@
 ﻿using OpenTK.Graphics.OpenGL4;
+using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
@@ -73,7 +74,7 @@ namespace OpenGL_2
            // GL.EnableVertexAttribArray(1);
 
             // textures idk why here
-            Texture texture = new Texture("C:/Users/labyss/Downloads/vozdushnyj_shar_aerostat_art_128614_1920x1080.jpg"); /// AND THIS
+            Texture texture = new Texture("C:/Users/labyss/Downloads/vozdushnyj_shar_aerostat_art_128614_1920x1080.jpg"); /// AND THIS FIX
             int texCoordLocation = 1;//shader.GetAttribLocation("aTexCoord"); /// FIX THIS 
             GL.EnableVertexAttribArray(texCoordLocation);
             GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
@@ -124,8 +125,16 @@ namespace OpenGL_2
             base.OnRenderFrame(e);
 
             GL.Clear(ClearBufferMask.ColorBufferBit);
+                
+            // gen transform matrix
+            Matrix4 rotation = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(45.0f));
+            Matrix4 scale = Matrix4.CreateScale(0.5f, 0.5f, 0.5f);
+            Matrix4 trans = rotation * scale;
 
             shader.Use(); /// почему перестановка этой штуки вниз ничего не ломала, до появления таймера
+
+            // rotation
+            shader.SetMatrix4("matrix", trans);
 
             /// binding VAO
             GL.BindVertexArray(VertexArrayObject);
