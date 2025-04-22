@@ -18,13 +18,11 @@ namespace OpenGL_2
     internal class Game :GameWindow
     {
         int VertexBufferObject;
-
         int VertexArrayObject;
-
         int ElementBufferObject;
 
+        int texCoordLocation;
         Shader shader;
-
         private Stopwatch timer;
 
         private readonly float[] vertices_color =
@@ -75,10 +73,9 @@ namespace OpenGL_2
 
             // textures idk why here
             Texture texture = new Texture("C:/Users/labyss/Downloads/vozdushnyj_shar_aerostat_art_128614_1920x1080.jpg"); /// AND THIS FIX
-            int texCoordLocation = 1;//shader.GetAttribLocation("aTexCoord"); /// FIX THIS 
-            GL.EnableVertexAttribArray(texCoordLocation);
+            texCoordLocation = 1;//shader.GetAttribLocation("aTexCoord"); /// FIX THIS 
             GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
-
+            GL.EnableVertexAttribArray(texCoordLocation);
 
             // working with EBO
             ElementBufferObject = GL.GenBuffer();
@@ -107,6 +104,8 @@ namespace OpenGL_2
             // Deleting VBO
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.DeleteBuffer(VertexBufferObject);
+            GL.DeleteTexture(texCoordLocation);
+
         }
 
         protected override void OnUpdateFrame(FrameEventArgs args)
