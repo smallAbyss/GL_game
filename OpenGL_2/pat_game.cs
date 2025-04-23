@@ -12,10 +12,10 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
-
+/*
 namespace OpenGL_2
 {
-    internal class Game : GameWindow
+    internal class Game_pat : GameWindow
     {
         int VertexBufferObject;
         int VertexArrayObject;
@@ -24,87 +24,15 @@ namespace OpenGL_2
         int texCoordLocation;
         Shader shader;
         private Stopwatch timer;
-        Camera camera;
+        Camera camera; 
 
         int width;
         int height;
 
-        private readonly float[] vertices =
-        {
-            //Position            Texture coordinates
-            -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-             0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-             0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-             0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-            -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+       
 
-            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-             0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-             0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-             0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-            -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-
-            -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-            -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-            -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-             0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-             0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-             0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-             0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-             0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-             0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-             0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-             0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-             0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-
-            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-             0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-             0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-             0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-            -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-
-
-            0f, 0f, 0f, 0.0f, 1.0f,
-            10f, 0f, 0f, 1.0f, 1.0f,
-            0f, 0f, 10f, 1.0f, 0.0f,
-        };
-
-        private readonly uint[] indices = {  // note that we start from 0!
-            0, 1, 2,
-            3, 4, 5,
-
-            6, 7, 8,
-            9, 10, 11,
-
-            12, 13, 14,
-            15, 16, 17,
-
-            18, 19, 20,
-            21, 22, 23,
-
-            24, 25, 26,
-            27, 28, 29,
-
-            30, 31, 32, 
-            33, 34, 35,
-
-
-            36, 37, 38
-        };
-
-        public Game(int width, int height, string title) :  base(GameWindowSettings.Default,
-            new NativeWindowSettings() { ClientSize = (width, height), Title = title }) 
+        public Game_pat(int width, int height, string title) : base(GameWindowSettings.Default,
+            new NativeWindowSettings() { ClientSize = (width, height), Title = title })
         {
             this.width = width;
             this.height = height;
@@ -118,7 +46,7 @@ namespace OpenGL_2
             GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBufferObject);
             GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
 
-            // creating VAO
+            // working with VAO
             VertexArrayObject = GL.GenVertexArray();
             GL.BindVertexArray(VertexArrayObject);
 
@@ -131,20 +59,15 @@ namespace OpenGL_2
             shader = new Shader("../../../Shaders/shader.vert", "../../../Shaders/shader.frag");
             shader.Use();
 
-            
-
             // vertex attributes: position
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
             GL.EnableVertexAttribArray(0);
 
             // textures idk why here
             Texture texture = new Texture("../../../Textures/moon.png");
-            Texture texture2 = new Texture("../../../Textures/cat.jpg");
-            shader.SetInt("textr", 0); // move to RenderFrame /// установка тестурного слота (ну или прсото интовой uniform)
-
 
             // vertex attributes: texture position
-            texCoordLocation = shader.GetAttribLocation("aTexCoord"); 
+            texCoordLocation = shader.GetAttribLocation("aTexCoord");
             GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
             GL.EnableVertexAttribArray(texCoordLocation);
 
@@ -168,7 +91,7 @@ namespace OpenGL_2
             base.OnUnload();
 
             shader.Dispose();
-            
+
             // Deleting VBO
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.DeleteBuffer(VertexBufferObject);
@@ -194,15 +117,15 @@ namespace OpenGL_2
         {
             base.OnRenderFrame(e);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
             /*
             // gen transform matrix
             Matrix4 rotation = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(45.0f));
             Matrix4 scale = Matrix4.CreateScale(0.5f, 0.5f, 0.5f);
             Matrix4 trans = rotation * scale;
-            */
+            *//*
 
             double timeValue = timer.Elapsed.TotalSeconds;
-
 
 
             Matrix4 model = Matrix4.Identity; // to world
@@ -214,7 +137,6 @@ namespace OpenGL_2
             shader.SetMatrix4("model", model);
             shader.SetMatrix4("view", view);
             shader.SetMatrix4("projection", projection);
-            
 
 
             /// binding VAO
@@ -222,11 +144,9 @@ namespace OpenGL_2
 
             // drawing
             GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
-           
+
             // unbinding VAO
             GL.BindVertexArray(0);
-
-
 
             // swap
             SwapBuffers();
@@ -243,3 +163,4 @@ namespace OpenGL_2
 
     }
 }
+*/

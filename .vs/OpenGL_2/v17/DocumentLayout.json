@@ -7,28 +7,32 @@
       "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\shaders\\shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\shaders\\shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\shaders\\shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\shaders\\shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\shaders\\shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\shaders\\shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\pat_game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\pat_game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,17 +42,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "shader.vert",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shaders\\shader.vert",
               "RelativeDocumentMoniker": "OpenGL_2\\Shaders\\shader.vert",
               "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shaders\\shader.vert",
               "RelativeToolTip": "OpenGL_2\\Shaders\\shader.vert",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-04-20T11:16:28.576Z",
               "IsPinned": true,
@@ -56,13 +60,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Shader.cs",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shader.cs",
               "RelativeDocumentMoniker": "OpenGL_2\\Shader.cs",
               "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shader.cs",
               "RelativeToolTip": "OpenGL_2\\Shader.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAYwGUAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAAHMAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T19:13:46.225Z",
               "IsPinned": true,
@@ -74,7 +78,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
+              "Title": "pat_game.cs",
+              "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\pat_game.cs",
+              "RelativeDocumentMoniker": "OpenGL_2\\pat_game.cs",
+              "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\pat_game.cs",
+              "RelativeToolTip": "OpenGL_2\\pat_game.cs",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAAAKUAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T15:08:46.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Camera.cs",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Camera.cs",
               "RelativeDocumentMoniker": "OpenGL_2\\Camera.cs",
@@ -87,13 +104,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "shader.frag",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shaders\\shader.frag",
               "RelativeDocumentMoniker": "OpenGL_2\\Shaders\\shader.frag",
               "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shaders\\shader.frag",
               "RelativeToolTip": "OpenGL_2\\Shaders\\shader.frag",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-04-20T11:16:38.667Z",
               "EditorCaption": ""
@@ -106,32 +123,33 @@
               "RelativeDocumentMoniker": "OpenGL_2\\Game.cs",
               "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Game.cs",
               "RelativeToolTip": "OpenGL_2\\Game.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAD4v3wAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAqwGYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T15:10:50.189Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "Texture.cs",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Texture.cs",
               "RelativeDocumentMoniker": "OpenGL_2\\Texture.cs",
               "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Texture.cs",
               "RelativeToolTip": "OpenGL_2\\Texture.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAuwBEAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T22:25:27.543Z"
+              "WhenOpened": "2025-04-20T22:25:27.543Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Program.cs",
               "RelativeDocumentMoniker": "OpenGL_2\\Program.cs",
               "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Program.cs",
               "RelativeToolTip": "OpenGL_2\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T15:06:33.224Z"
             }

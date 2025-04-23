@@ -14,10 +14,14 @@ namespace OpenGL_2
     internal class Texture
     {
         private int Handle;
+        private static int i = 0;
         public Texture(string tex_path)
         {
             Handle = GL.GenTexture();
-            Use();
+            GL.ActiveTexture(TextureUnit.Texture0 + i);
+            i++;
+            GL.BindTexture(TextureTarget.Texture2D, Handle);
+
 
             // stb_image loads from the top-left pixel, whereas OpenGL loads from the bottom-left, causing the texture to be flipped vertically.
             // This will correct that, making the texture display properly.
@@ -25,7 +29,6 @@ namespace OpenGL_2
 
             // Load the image.
             ImageResult image = ImageResult.FromStream(File.OpenRead(tex_path), ColorComponents.RedGreenBlueAlpha);
-
             GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, image.Width, image.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, image.Data);
 
 
@@ -33,8 +36,6 @@ namespace OpenGL_2
             GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
         }
 
-        private void Use() {
-            GL.BindTexture(TextureTarget.Texture2D, Handle);
-        }
+
     }
 }

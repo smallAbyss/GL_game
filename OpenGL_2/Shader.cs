@@ -113,5 +113,12 @@ namespace OpenGL_2
             GC.SuppressFinalize(this);
         }
 
+        public void SetInt(string name, int value) /// делалось для установки тектсруного слота
+        {
+            GL.UseProgram(Handle); 
+            int location = GL.GetUniformLocation(Handle, name);
+            GL.Uniform1(location, value);
+        }
+
     } // shader class end
 } // namespace end
