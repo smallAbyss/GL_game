@@ -19,6 +19,9 @@
       "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\shaders\\shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\labyss\\AppData\\Local\\Temp\\bc2a073f-1911-4f75-8192-795cc040a7a5_OpenTK_Guide-main(1).zip.7a5\\OpenTK_Guide-main\\OpenTK\\Game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -37,20 +40,36 @@
           "SelectedChildIndex": 5,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "shader.vert",
+              "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shaders\\shader.vert",
+              "RelativeDocumentMoniker": "OpenGL_2\\Shaders\\shader.vert",
+              "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shaders\\shader.vert",
+              "RelativeToolTip": "OpenGL_2\\Shaders\\shader.vert",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-20T11:16:28.576Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Texture.cs",
-              "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Texture.cs",
-              "RelativeDocumentMoniker": "OpenGL_2\\Texture.cs",
-              "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Texture.cs",
-              "RelativeToolTip": "OpenGL_2\\Texture.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAABAAAAAnAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Shader.cs",
+              "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shader.cs",
+              "RelativeDocumentMoniker": "OpenGL_2\\Shader.cs",
+              "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shader.cs",
+              "RelativeToolTip": "OpenGL_2\\Shader.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T22:25:27.543Z"
+              "WhenOpened": "2025-04-17T19:13:46.225Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
@@ -62,32 +81,7 @@
               "RelativeToolTip": "OpenGL_2\\Shaders\\shader.frag",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-04-20T11:16:38.667Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "shader.vert",
-              "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shaders\\shader.vert",
-              "RelativeDocumentMoniker": "OpenGL_2\\Shaders\\shader.vert",
-              "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shaders\\shader.vert",
-              "RelativeToolTip": "OpenGL_2\\Shaders\\shader.vert",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-04-20T11:16:28.576Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Shader.cs",
-              "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shader.cs",
-              "RelativeDocumentMoniker": "OpenGL_2\\Shader.cs",
-              "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shader.cs",
-              "RelativeToolTip": "OpenGL_2\\Shader.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAvwGMAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T19:13:46.225Z",
+              "WhenOpened": "2025-04-20T11:16:38.667Z",
               "EditorCaption": ""
             },
             {
@@ -98,7 +92,7 @@
               "RelativeDocumentMoniker": "OpenGL_2\\Game.cs",
               "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Game.cs*",
               "RelativeToolTip": "OpenGL_2\\Game.cs*",
-              "ViewState": "AgIAAHQAAAAAAAAAAAA5wI8AAAC9AAAAAAAAAA==",
+              "ViewState": "AgIAALQAAAAAAAAAAAA+wMMAAABqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T15:10:50.189Z",
               "EditorCaption": ""
@@ -106,6 +100,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "Texture.cs",
+              "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Texture.cs",
+              "RelativeDocumentMoniker": "OpenGL_2\\Texture.cs",
+              "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Texture.cs",
+              "RelativeToolTip": "OpenGL_2\\Texture.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-20T22:25:27.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Program.cs",
               "RelativeDocumentMoniker": "OpenGL_2\\Program.cs",
@@ -114,6 +121,40 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T15:06:33.224Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "9b00a2e1-76ba-4b5e-b144-9cf5775edafe",
+        "Display": 0,
+        "X": 170,
+        "Y": 220,
+        "Width": 1258,
+        "Height": 522,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\labyss\\AppData\\Local\\Temp\\bc2a073f-1911-4f75-8192-795cc040a7a5_OpenTK_Guide-main(1).zip.7a5\\OpenTK_Guide-main\\OpenTK\\Game.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\bc2a073f-1911-4f75-8192-795cc040a7a5_OpenTK_Guide-main(1).zip.7a5\\OpenTK_Guide-main\\OpenTK\\Game.cs",
+              "ToolTip": "C:\\Users\\labyss\\AppData\\Local\\Temp\\bc2a073f-1911-4f75-8192-795cc040a7a5_OpenTK_Guide-main(1).zip.7a5\\OpenTK_Guide-main\\OpenTK\\Game.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\bc2a073f-1911-4f75-8192-795cc040a7a5_OpenTK_Guide-main(1).zip.7a5\\OpenTK_Guide-main\\OpenTK\\Game.cs [Read Only]",
+              "ViewState": "AgIAANoAAAAAAAAAAAAswOQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T11:16:16.548Z",
+              "EditorCaption": " [Read Only]"
             }
           ]
         }

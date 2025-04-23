@@ -28,26 +28,70 @@ namespace OpenGL_2
         int width;
         int height;
 
-        private readonly float[] vertices_color =
-        {
-            // positions         // colors
-             0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
-            -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
-             0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top 
-        };
-
         private readonly float[] vertices =
         {
-            //Position          Texture coordinates
-             0.5f,  0.5f, -1.0f, 1.0f, 1.0f, // top right
-             0.5f, -0.5f, -1.0f, 1.0f, 0.0f, // bottom right
-            -0.5f, -0.5f, -1.0f, 0.0f, 0.0f, // bottom left
-            -0.5f,  0.5f, -1.0f, 0.0f, 1.0f  // top left
+            //Position            Texture coordinates
+            -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+             0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+             0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+             0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+            -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+
+            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+             0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+             0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+             0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+            -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+            -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+            -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+            -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+             0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+             0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+             0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+             0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+             0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+             0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+             0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+             0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+             0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+             0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+             0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+             0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+            -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
         };
 
         private readonly uint[] indices = {  // note that we start from 0!
-            0, 1, 2   /// мне было лень убирать индексы, а ещё интересная штука: если здесь указать элементы > vertices.size, то оно не ломается
-                       /// ну точнее как.. проверь в общем
+            0, 1, 2,
+            3, 4, 5,
+
+            6, 7, 8,
+            9, 10, 11,
+
+            12, 13, 14,
+            15, 16, 17,
+
+            18, 19, 20,
+            21, 22, 23,
+
+            24, 25, 26,
+            27, 28, 29,
+
+            30, 31, 32, 
+            33, 34, 35
         };
 
 
@@ -99,6 +143,8 @@ namespace OpenGL_2
             timer = new Stopwatch();
             timer.Start();
 
+            GL.Enable(EnableCap.DepthTest);
+
         }
 
         protected override void OnUnload()
@@ -110,7 +156,6 @@ namespace OpenGL_2
             // Deleting VBO
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.DeleteBuffer(VertexBufferObject);
-            GL.DeleteTexture(texCoordLocation);
 
         }
 
@@ -128,8 +173,7 @@ namespace OpenGL_2
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             base.OnRenderFrame(e);
-
-            GL.Clear(ClearBufferMask.ColorBufferBit);
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
             /*
             // gen transform matrix
@@ -141,7 +185,8 @@ namespace OpenGL_2
             double timeValue = timer.Elapsed.TotalSeconds;
 
 
-            Matrix4 model = Matrix4.CreateRotationX(MathHelper.DegreesToRadians((float)(15.0f*timeValue*20))); // to world
+            Matrix4 model = Matrix4.CreateRotationX(MathHelper.DegreesToRadians((float)(15.0f*timeValue*20))) *
+                Matrix4.CreateRotationY(MathHelper.DegreesToRadians((float)(15.0f * timeValue * 2))); // to world
             Matrix4 view = Matrix4.CreateTranslation(0.0f, 0.0f, -3.0f); // moving scene
             Matrix4 projection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45.0f), width / height, 0.1f, 100.0f);
 
