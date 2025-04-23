@@ -61,7 +61,6 @@ namespace OpenGL_2
         protected override void OnLoad()
         {
             base.OnLoad();
-
             //working with VBO
             VertexBufferObject = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBufferObject);
@@ -131,7 +130,7 @@ namespace OpenGL_2
             base.OnRenderFrame(e);
 
             GL.Clear(ClearBufferMask.ColorBufferBit);
-                
+
             /*
             // gen transform matrix
             Matrix4 rotation = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(45.0f));
@@ -139,25 +138,20 @@ namespace OpenGL_2
             Matrix4 trans = rotation * scale;
             */
 
-            Matrix4 model = Matrix4.Identity;
-            Matrix4 view = Matrix4.Identity;
-            Matrix4 projection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(60.0f), width / height, 0.1f, 100.0f);
-
-            int modelLocation = GL.GetUniformLocation(shader.Handle, "model");
-            int viewLocation = GL.GetUniformLocation(shader.Handle, "view");
-            int projectionLocation = GL.GetUniformLocation(shader.Handle, "projection");
-
-            model = Matrix4.CreateTranslation(0f, 0f, -2f); // чтоб видно было точно, убери потом 
-
-            GL.UniformMatrix4(modelLocation, true, ref model);
-            GL.UniformMatrix4(viewLocation, true, ref view);
-            GL.UniformMatrix4(projectionLocation, true, ref projection);
+            double timeValue = timer.Elapsed.TotalSeconds;
 
 
-            shader.Use(); /// почему перестановка этой штуки вниз ничего не ломала, до появления таймера
+            Matrix4 model = Matrix4.CreateRotationX(MathHelper.DegreesToRadians((float)(15.0f*timeValue*20))); // to world
+            Matrix4 view = Matrix4.CreateTranslation(0.0f, 0.0f, -3.0f); // moving scene
+            Matrix4 projection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45.0f), width / height, 0.1f, 100.0f);
 
-            // rotation
-            //shader.SetMatrix4("matrix", trans);
+
+            shader.Use(); /// почему перестановка этой штуки вниз ничего не ломает
+
+            shader.SetMatrix4("model", model);
+            shader.SetMatrix4("view", view);
+            shader.SetMatrix4("projection", projection);
+
 
             /// binding VAO
             GL.BindVertexArray(VertexArrayObject);

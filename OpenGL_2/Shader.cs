@@ -99,7 +99,7 @@ namespace OpenGL_2
         {
             GL.UseProgram(Handle);
 
-            GL.UniformMatrix4(GL.GetUniformLocation(Handle, "transform"), true, ref matrix);
+            GL.UniformMatrix4(GL.GetUniformLocation(Handle, name), true, ref matrix);
         }
 
         public int GetAttribLocation(string attribName)
