@@ -72,7 +72,12 @@ namespace OpenGL_2
              0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
              0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
             -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+
+
+            0f, 0f, 0f, 0.0f, 1.0f,
+            10f, 0f, 0f, 1.0f, 1.0f,
+            0f, 0f, 10f, 1.0f, 0.0f,
         };
 
         private readonly uint[] indices = {  // note that we start from 0!
@@ -92,7 +97,10 @@ namespace OpenGL_2
             27, 28, 29,
 
             30, 31, 32, 
-            33, 34, 35
+            33, 34, 35,
+
+
+            36, 37, 38
         };
 
 
@@ -166,12 +174,8 @@ namespace OpenGL_2
             MouseState mouse = MouseState;
             KeyboardState input = KeyboardState;
 
-
-
             base.OnUpdateFrame(args);
             camera.Update(input, mouse, args);
-
-
 
             if (KeyboardState.IsKeyDown(Keys.Escape))
             {
@@ -195,9 +199,8 @@ namespace OpenGL_2
             double timeValue = timer.Elapsed.TotalSeconds;
 
 
-            Matrix4 model = Matrix4.CreateRotationX(MathHelper.DegreesToRadians((float)(15.0f*timeValue*20))) *
-                Matrix4.CreateRotationY(MathHelper.DegreesToRadians((float)(15.0f * timeValue * 2))); // to world
-            Matrix4 view = camera.GetViewMatrix(); 
+            Matrix4 model = Matrix4.Identity; // to world
+            Matrix4 view = camera.GetViewMatrix();
             Matrix4 projection = camera.GetProjection();
 
             shader.Use(); /// почему перестановка этой штуки вниз ничего не ломает
@@ -205,7 +208,7 @@ namespace OpenGL_2
             shader.SetMatrix4("model", model);
             shader.SetMatrix4("view", view);
             shader.SetMatrix4("projection", projection);
-
+            
 
             /// binding VAO
             GL.BindVertexArray(VertexArrayObject);

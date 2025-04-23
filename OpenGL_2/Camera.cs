@@ -44,6 +44,7 @@ namespace OpenGL_2
 
         public void InputController(KeyboardState input, MouseState mouse,
         FrameEventArgs e)
+        
         {
             if (firstMove)
             {
@@ -62,9 +63,11 @@ namespace OpenGL_2
 
             }
 
+            Vector3 fr = new Vector3(front.X, 0, front.Z);
+
             if (input.IsKeyDown(Keys.W))
             {
-                position += front * SPEED * (float)e.Time;
+                position += fr * SPEED * (float)e.Time;
             }
             if (input.IsKeyDown(Keys.A))
             {
@@ -72,7 +75,7 @@ namespace OpenGL_2
             }
             if (input.IsKeyDown(Keys.S))
             {
-                position -= front * SPEED * (float)e.Time;
+                position -= fr * SPEED * (float)e.Time;
             }
             if (input.IsKeyDown(Keys.D))
             {
@@ -81,16 +84,15 @@ namespace OpenGL_2
 
             if (input.IsKeyDown(Keys.E))
             {
-                position += up * SPEED * (float)e.Time;
+                position += Vector3.UnitY * SPEED * (float)e.Time;
             }
             if (input.IsKeyDown(Keys.Q))
             {
-                position -= up * SPEED * (float)e.Time;
+                position -= Vector3.UnitY * SPEED * (float)e.Time;
             }
 
             UpdateVectors();
         }
-        
         public void Update(KeyboardState input, MouseState mouse,
         FrameEventArgs e)
         {
@@ -100,16 +102,16 @@ namespace OpenGL_2
         private void UpdateVectors()
         {
           
-            front.X = MathF.Cos(MathHelper.DegreesToRadians(pitch)) *
-            MathF.Cos(MathHelper.DegreesToRadians(yaw));
+            front.X = MathF.Cos(MathHelper.DegreesToRadians(pitch)) * MathF.Cos(MathHelper.DegreesToRadians(yaw));
             front.Y = MathF.Sin(MathHelper.DegreesToRadians(pitch));
-            front.Z = MathF.Cos(MathHelper.DegreesToRadians(pitch)) *
-            MathF.Sin(MathHelper.DegreesToRadians(yaw));
+            front.Z = MathF.Cos(MathHelper.DegreesToRadians(pitch)) * MathF.Sin(MathHelper.DegreesToRadians(yaw));
             front = Vector3.Normalize(front);
-            right = Vector3.Normalize(Vector3.Cross(front,
-            Vector3.UnitY));
+            
+            right = Vector3.Normalize(Vector3.Cross(front, Vector3.UnitY));
+
             up = Vector3.Normalize(Vector3.Cross(right, front));
         }
 
+  
     }
 }
