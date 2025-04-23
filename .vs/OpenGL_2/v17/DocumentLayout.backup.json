@@ -55,8 +55,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-04-20T11:16:28.576Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -69,8 +68,7 @@
               "ViewState": "AgIAABMAAAAAAAAAAAAAAHMAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T19:13:46.225Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -86,8 +84,7 @@
               "RelativeToolTip": "OpenGL_2\\pat_game.cs",
               "ViewState": "AgIAAIcAAAAAAAAAAAAAAKUAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T15:08:46.64Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T15:08:46.64Z"
             },
             {
               "$type": "Document",
@@ -99,8 +96,7 @@
               "RelativeToolTip": "OpenGL_2\\Camera.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:46:23.669Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T11:46:23.669Z"
             },
             {
               "$type": "Document",
@@ -112,8 +108,7 @@
               "RelativeToolTip": "OpenGL_2\\Shaders\\shader.frag",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-04-20T11:16:38.667Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T11:16:38.667Z"
             },
             {
               "$type": "Document",
@@ -121,9 +116,9 @@
               "Title": "Game.cs",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Game.cs",
               "RelativeDocumentMoniker": "OpenGL_2\\Game.cs",
-              "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Game.cs",
-              "RelativeToolTip": "OpenGL_2\\Game.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAqwGYAAAAWAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Game.cs*",
+              "RelativeToolTip": "OpenGL_2\\Game.cs*",
+              "ViewState": "AgIAANcAAAAAAAAAAAAiwA8BAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T15:10:50.189Z",
               "EditorCaption": ""
@@ -138,8 +133,7 @@
               "RelativeToolTip": "OpenGL_2\\Texture.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAuwBEAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T22:25:27.543Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T22:25:27.543Z"
             },
             {
               "$type": "Document",

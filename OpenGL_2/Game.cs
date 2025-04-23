@@ -103,6 +103,12 @@ namespace OpenGL_2
             36, 37, 38
         };
 
+
+        private readonly uint[] ind = {  // note that we start from 0!
+            0, 1, 38
+        };
+
+        int  VAO;
         public Game(int width, int height, string title) :  base(GameWindowSettings.Default,
             new NativeWindowSettings() { ClientSize = (width, height), Title = title }) 
         {
@@ -112,7 +118,41 @@ namespace OpenGL_2
 
         protected override void OnLoad()
         {
+            
             base.OnLoad();
+
+            // creating a shader
+            shader = new Shader("../../../Shaders/shader.vert", "../../../Shaders/shader.frag");
+            shader.Use();
+
+
+
+                            int VBO = GL.GenBuffer();
+                            GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
+                            GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
+
+                            // creating VAO
+                            VAO = GL.GenVertexArray();
+                            GL.BindVertexArray(VAO);
+
+                            // working with EBO
+                            int EBO = GL.GenBuffer();
+                            GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
+                            GL.BufferData(BufferTarget.ElementArrayBuffer, ind.Length * sizeof(uint), ind, BufferUsageHint.StaticDraw);
+
+
+                            // vertex attributes: position
+                            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
+                            GL.EnableVertexAttribArray(0);
+
+                            // vertex attributes: texture position
+                            texCoordLocation = shader.GetAttribLocation("aTexCoord");
+                            GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
+                            GL.EnableVertexAttribArray(texCoordLocation);
+
+
+
+
             //working with VBO
             VertexBufferObject = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBufferObject);
@@ -127,26 +167,24 @@ namespace OpenGL_2
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, ElementBufferObject);
             GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
 
-            // creating a shader
-            shader = new Shader("../../../Shaders/shader.vert", "../../../Shaders/shader.frag");
-            shader.Use();
-
-            
-
             // vertex attributes: position
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
             GL.EnableVertexAttribArray(0);
-
-            // textures idk why here
-            Texture texture = new Texture("../../../Textures/moon.png");
-            Texture texture2 = new Texture("../../../Textures/cat.jpg");
-            shader.SetInt("textr", 0); // move to RenderFrame /// установка тестурного слота (ну или прсото интовой uniform)
 
 
             // vertex attributes: texture position
             texCoordLocation = shader.GetAttribLocation("aTexCoord"); 
             GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
             GL.EnableVertexAttribArray(texCoordLocation);
+
+
+     
+
+            // textures idk why here
+            Texture texture = new Texture("../../../Textures/moon.png");
+            Texture texture2 = new Texture("../../../Textures/cat.jpg");
+            //shader.SetInt("textr", 0); // move to RenderFrame /// установка тестурного слота (ну или прсото интовой uniform)
+
 
             // set backroundColor
             GL.ClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -214,17 +252,25 @@ namespace OpenGL_2
             shader.SetMatrix4("model", model);
             shader.SetMatrix4("view", view);
             shader.SetMatrix4("projection", projection);
-            
 
 
-            /// binding VAO
+            // Drawing first texture
+            // binding VAO
             GL.BindVertexArray(VertexArrayObject);
-
+            shader.SetInt("textr", 0); /// установка тестурного слота (ну или прсото интовой uniform)
             // drawing
             GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
-           
             // unbinding VAO
             GL.BindVertexArray(0);
+
+
+
+            /// Drawing second texture
+            GL.BindVertexArray(VAO);
+            shader.SetInt("textr", 1);
+            GL.DrawElements(PrimitiveType.Triangles, ind.Length, DrawElementsType.UnsignedInt, 0);
+            GL.BindVertexArray(0);
+
 
 
 
