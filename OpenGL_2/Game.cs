@@ -119,22 +119,9 @@ namespace OpenGL_2
             GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBufferObject);
             GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
 
-            // creating & working with VAO
+            // working with VAO
             VertexArrayObject = GL.GenVertexArray();
             GL.BindVertexArray(VertexArrayObject);
-
-            // vertex attributes
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
-            GL.EnableVertexAttribArray(0);
-
-           // GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
-           // GL.EnableVertexAttribArray(1);
-
-            // textures idk why here
-            Texture texture = new Texture("C:/Users/labyss/Downloads/vozdushnyj_shar_aerostat_art_128614_1920x1080.jpg"); /// AND THIS FIX
-            texCoordLocation = 1;//shader.GetAttribLocation("aTexCoord"); /// FIX THIS 
-            GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
-            GL.EnableVertexAttribArray(texCoordLocation);
 
             // working with EBO
             ElementBufferObject = GL.GenBuffer();
@@ -145,6 +132,18 @@ namespace OpenGL_2
             shader = new Shader("../../../Shaders/shader.vert", "../../../Shaders/shader.frag");
             shader.Use();
 
+            // vertex attributes: position
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
+            GL.EnableVertexAttribArray(0);
+
+            // textures idk why here
+            Texture texture = new Texture("../../../Textures/moon.png");
+            
+            // vertex attributes: texture position
+            texCoordLocation = shader.GetAttribLocation("aTexCoord"); 
+            GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
+            GL.EnableVertexAttribArray(texCoordLocation);
+
             // set backroundColor
             GL.ClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
@@ -152,7 +151,10 @@ namespace OpenGL_2
             timer = new Stopwatch();
             timer.Start();
 
+            // deeptest
             GL.Enable(EnableCap.DepthTest);
+
+            // camera
             camera = new Camera(width, height, Vector3.Zero);
             CursorState = CursorState.Grabbed;
         }

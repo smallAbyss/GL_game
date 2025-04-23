@@ -106,7 +106,7 @@ namespace OpenGL_2
         {
             return GL.GetAttribLocation(Handle, attribName);
         }
-       
+
         public void Dispose()
         {
             Dispose(true);
