@@ -259,7 +259,7 @@ namespace OpenGL_2
             GL.BindVertexArray(VertexArrayObject);
             shader.SetInt("textr", 0); /// установка тестурного слота (ну или прсото интовой uniform)
             // drawing
-            GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
+            GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 12); // sizeOf(typeOf(vertices)) * 3
             // unbinding VAO
             GL.BindVertexArray(0);
 
