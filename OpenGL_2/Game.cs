@@ -25,6 +25,9 @@ namespace OpenGL_2
         Shader shader;
         private Stopwatch timer;
 
+        int width;
+        int height;
+
         private readonly float[] vertices_color =
         {
             // positions         // colors
@@ -36,10 +39,10 @@ namespace OpenGL_2
         private readonly float[] vertices =
         {
             //Position          Texture coordinates
-             0.5f,  0.5f, 0.0f, 1.0f, 1.0f, // top right
-             0.5f, -0.5f, 0.0f, 1.0f, 0.0f, // bottom right
-            -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, // bottom left
-            -0.5f,  0.5f, 0.0f, 0.0f, 1.0f  // top left
+             0.5f,  0.5f, -1.0f, 1.0f, 1.0f, // top right
+             0.5f, -0.5f, -1.0f, 1.0f, 0.0f, // bottom right
+            -0.5f, -0.5f, -1.0f, 0.0f, 0.0f, // bottom left
+            -0.5f,  0.5f, -1.0f, 0.0f, 1.0f  // top left
         };
 
         private readonly uint[] indices = {  // note that we start from 0!
@@ -48,8 +51,12 @@ namespace OpenGL_2
         };
 
 
-        public Game(int width, int height, string title) : base(GameWindowSettings.Default,
-            new NativeWindowSettings() { ClientSize = (width, height), Title = title }) { } // Vs жаловался на просто Size
+        public Game(int width, int height, string title) :  base(GameWindowSettings.Default,
+            new NativeWindowSettings() { ClientSize = (width, height), Title = title }) 
+        {
+            this.width = width;
+            this.height = height;
+        } // Vs жаловался на просто Size
 
         protected override void OnLoad()
         {
@@ -125,15 +132,32 @@ namespace OpenGL_2
 
             GL.Clear(ClearBufferMask.ColorBufferBit);
                 
+            /*
             // gen transform matrix
             Matrix4 rotation = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(45.0f));
             Matrix4 scale = Matrix4.CreateScale(0.5f, 0.5f, 0.5f);
             Matrix4 trans = rotation * scale;
+            */
+
+            Matrix4 model = Matrix4.Identity;
+            Matrix4 view = Matrix4.Identity;
+            Matrix4 projection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(60.0f), width / height, 0.1f, 100.0f);
+
+            int modelLocation = GL.GetUniformLocation(shader.Handle, "model");
+            int viewLocation = GL.GetUniformLocation(shader.Handle, "view");
+            int projectionLocation = GL.GetUniformLocation(shader.Handle, "projection");
+
+            model = Matrix4.CreateTranslation(0f, 0f, -2f); // чтоб видно было точно, убери потом 
+
+            GL.UniformMatrix4(modelLocation, true, ref model);
+            GL.UniformMatrix4(viewLocation, true, ref view);
+            GL.UniformMatrix4(projectionLocation, true, ref projection);
+
 
             shader.Use(); /// почему перестановка этой штуки вниз ничего не ломала, до появления таймера
 
             // rotation
-            shader.SetMatrix4("matrix", trans);
+            //shader.SetMatrix4("matrix", trans);
 
             /// binding VAO
             GL.BindVertexArray(VertexArrayObject);
@@ -153,6 +177,8 @@ namespace OpenGL_2
             base.OnFramebufferResize(e);
 
             GL.Viewport(0, 0, e.Width, e.Height);
+            this.width = e.Width;
+            this.height = e.Height;
         }
 
     }
