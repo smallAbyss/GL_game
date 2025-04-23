@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Numerics;
+//using System.Numerics;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +24,7 @@ namespace OpenGL_2
         int texCoordLocation;
         Shader shader;
         private Stopwatch timer;
+        Camera camera;
 
         int width;
         int height;
@@ -144,7 +145,8 @@ namespace OpenGL_2
             timer.Start();
 
             GL.Enable(EnableCap.DepthTest);
-
+            camera = new Camera(width, height, Vector3.Zero);
+            CursorState = CursorState.Grabbed;
         }
 
         protected override void OnUnload()
@@ -161,7 +163,15 @@ namespace OpenGL_2
 
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
+            MouseState mouse = MouseState;
+            KeyboardState input = KeyboardState;
+
+
+
             base.OnUpdateFrame(args);
+            camera.Update(input, mouse, args);
+
+
 
             if (KeyboardState.IsKeyDown(Keys.Escape))
             {
@@ -187,9 +197,8 @@ namespace OpenGL_2
 
             Matrix4 model = Matrix4.CreateRotationX(MathHelper.DegreesToRadians((float)(15.0f*timeValue*20))) *
                 Matrix4.CreateRotationY(MathHelper.DegreesToRadians((float)(15.0f * timeValue * 2))); // to world
-            Matrix4 view = Matrix4.CreateTranslation(0.0f, 0.0f, -3.0f); // moving scene
-            Matrix4 projection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45.0f), width / height, 0.1f, 100.0f);
-
+            Matrix4 view = camera.GetViewMatrix(); 
+            Matrix4 projection = camera.GetProjection();
 
             shader.Use(); /// почему перестановка этой штуки вниз ничего не ломает
 
