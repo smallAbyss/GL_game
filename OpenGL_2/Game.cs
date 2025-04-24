@@ -210,6 +210,9 @@ namespace OpenGL_2
             // Deleting VBO
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.DeleteBuffer(VertexBufferObject);
+            GL.DeleteBuffer(VertexArrayObject);
+            GL.DeleteBuffer(ElementBufferObject);
+
 
         }
 
