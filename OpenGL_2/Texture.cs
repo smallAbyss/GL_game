@@ -36,6 +36,10 @@ namespace OpenGL_2
             GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
         }
 
+        public int GetActiveTextureSocketNumber()
+        {
+            return i;
+        }
 
     }
 }

@@ -12,7 +12,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
-/*
+
 namespace OpenGL_2
 {
     internal class Game_pat : GameWindow
@@ -29,7 +29,81 @@ namespace OpenGL_2
         int width;
         int height;
 
-       
+
+        Surface flor;
+
+        private readonly float[] vertices =
+{
+       //Position            Texture coordinates
+       -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+        0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+       -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+       -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+
+       -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+        0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+       -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+       -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+       -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+       -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+       -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+       -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+       -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+       -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+       -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+       -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+       -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+       -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+       -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+       -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+
+
+       0f, 0f, 0f, 0.0f, 1.0f,
+       10f, 0f, 0f, 1.0f, 1.0f,
+       0f, 0f, 10f, 1.0f, 0.0f,
+   };
+
+        private readonly uint[] indices = {  // note that we start from 0!
+       0, 1, 2,
+       3, 4, 5,
+
+       6, 7, 8,
+       9, 10, 11,
+
+       12, 13, 14,
+       15, 16, 17,
+
+       18, 19, 20,
+       21, 22, 23,
+
+       24, 25, 26,
+       27, 28, 29,
+
+       30, 31, 32,
+       33, 34, 35
+   };
+
+
 
         public Game_pat(int width, int height, string title) : base(GameWindowSettings.Default,
             new NativeWindowSettings() { ClientSize = (width, height), Title = title })
@@ -84,6 +158,8 @@ namespace OpenGL_2
             // camera
             camera = new Camera(width, height, Vector3.Zero);
             CursorState = CursorState.Grabbed;
+
+            flor = new Surface(shader, camera, "../../../Textures/cat.jpg");
         }
 
         protected override void OnUnload()
@@ -117,16 +193,16 @@ namespace OpenGL_2
         {
             base.OnRenderFrame(e);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
+            
             /*
             // gen transform matrix
             Matrix4 rotation = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(45.0f));
             Matrix4 scale = Matrix4.CreateScale(0.5f, 0.5f, 0.5f);
             Matrix4 trans = rotation * scale;
-            *//*
+            */
 
             double timeValue = timer.Elapsed.TotalSeconds;
-
+            shader.SetInt("textr", 0);
 
             Matrix4 model = Matrix4.Identity; // to world
             Matrix4 view = camera.GetViewMatrix();
@@ -148,6 +224,9 @@ namespace OpenGL_2
             // unbinding VAO
             GL.BindVertexArray(0);
 
+
+            flor.Draw();
+
             // swap
             SwapBuffers();
         }
@@ -163,4 +242,3 @@ namespace OpenGL_2
 
     }
 }
-*/

@@ -207,10 +207,13 @@ namespace OpenGL_2
 
             shader.Dispose();
             
-            // Deleting VBO
+            // Deleting Buffers
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
+            GL.BindVertexArray(0);
             GL.DeleteBuffer(VertexBufferObject);
-
+            GL.DeleteBuffer(ElementBufferObject);
+            GL.DeleteBuffer(VertexArrayObject);
         }
 
         protected override void OnUpdateFrame(FrameEventArgs args)
@@ -247,7 +250,7 @@ namespace OpenGL_2
             Matrix4 view = camera.GetViewMatrix();
             Matrix4 projection = camera.GetProjection();
 
-            shader.Use(); /// почему перестановка этой штуки вниз ничего не ломает
+            shader.Use(); /// почему перестановка этой штуки вниз ничего не ломает | потому что где-то уже вызван был
 
             shader.SetMatrix4("model", model);
             shader.SetMatrix4("view", view);

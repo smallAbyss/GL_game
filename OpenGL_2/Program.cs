@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        using (Game game = new Game(1000, 800, "LearnOpenTK"))
+        using (Game_pat game = new Game_pat(1000, 800, "LearnOpenTK"))
         {
             game.Run();
 
