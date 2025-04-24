@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\pat_game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\surface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\surface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,20 +27,12 @@
       "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\surface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\surface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\shaders\\shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\shaders\\shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|c:\\users\\labyss\\source\\repos\\kg1\\gl_game\\opengl_2\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AF9399D-4C91-431D-BC5A-FD453638A49A}|OpenGL_2\\OpenGL_2.csproj|solutionrelative:opengl_2\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +46,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "shader.vert",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shaders\\shader.vert",
               "RelativeDocumentMoniker": "OpenGL_2\\Shaders\\shader.vert",
@@ -59,20 +59,21 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "Shader.cs",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shader.cs",
               "RelativeDocumentMoniker": "OpenGL_2\\Shader.cs",
               "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Shader.cs",
               "RelativeToolTip": "OpenGL_2\\Shader.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAuwF0AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAAE0AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-17T19:13:46.225Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Game.cs",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Game.cs",
               "RelativeDocumentMoniker": "OpenGL_2\\Game.cs",
@@ -89,13 +90,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Surface.cs",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Surface.cs",
               "RelativeDocumentMoniker": "OpenGL_2\\Surface.cs",
               "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Surface.cs",
               "RelativeToolTip": "OpenGL_2\\Surface.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAuwBoAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAUwDAAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-24T13:43:51.638Z",
               "EditorCaption": ""
@@ -108,14 +109,14 @@
               "RelativeDocumentMoniker": "OpenGL_2\\pat_game.cs",
               "ToolTip": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\pat_game.cs",
               "RelativeToolTip": "OpenGL_2\\pat_game.cs",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAiwJIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAUwKYAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T15:08:46.64Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Camera.cs",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Camera.cs",
               "RelativeDocumentMoniker": "OpenGL_2\\Camera.cs",
@@ -123,12 +124,11 @@
               "RelativeToolTip": "OpenGL_2\\Camera.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAuwDYAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:46:23.669Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T11:46:23.669Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Texture.cs",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Texture.cs",
               "RelativeDocumentMoniker": "OpenGL_2\\Texture.cs",
@@ -136,12 +136,11 @@
               "RelativeToolTip": "OpenGL_2\\Texture.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T22:25:27.543Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T22:25:27.543Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\labyss\\source\\repos\\KG1\\GL_game\\OpenGL_2\\Program.cs",
               "RelativeDocumentMoniker": "OpenGL_2\\Program.cs",
@@ -149,8 +148,7 @@
               "RelativeToolTip": "OpenGL_2\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-17T15:06:33.224Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-17T15:06:33.224Z"
             }
           ]
         }

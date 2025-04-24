@@ -115,35 +115,7 @@ namespace OpenGL_2
         protected override void OnLoad()
         {
             base.OnLoad();
-            //working with VBO
-            VertexBufferObject = GL.GenBuffer();
-            GL.BindBuffer(BufferTarget.ArrayBuffer, VertexBufferObject);
-            GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
-
-            // working with VAO
-            VertexArrayObject = GL.GenVertexArray();
-            GL.BindVertexArray(VertexArrayObject);
-
-            // working with EBO
-            ElementBufferObject = GL.GenBuffer();
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, ElementBufferObject);
-            GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
-
-            // creating a shader
             shader = new Shader("../../../Shaders/shader.vert", "../../../Shaders/shader.frag");
-            shader.Use();
-
-            // vertex attributes: position
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
-            GL.EnableVertexAttribArray(0);
-
-            // textures idk why here
-            Texture texture = new Texture("../../../Textures/moon.png");
-
-            // vertex attributes: texture position
-            texCoordLocation = shader.GetAttribLocation("aTexCoord");
-            GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
-            GL.EnableVertexAttribArray(texCoordLocation);
 
             // set backroundColor
             GL.ClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -194,35 +166,7 @@ namespace OpenGL_2
             base.OnRenderFrame(e);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             
-            /*
-            // gen transform matrix
-            Matrix4 rotation = Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(45.0f));
-            Matrix4 scale = Matrix4.CreateScale(0.5f, 0.5f, 0.5f);
-            Matrix4 trans = rotation * scale;
-            */
-
-            double timeValue = timer.Elapsed.TotalSeconds;
-            shader.SetInt("textr", 0);
-
-            Matrix4 model = Matrix4.Identity; // to world
-            Matrix4 view = camera.GetViewMatrix();
-            Matrix4 projection = camera.GetProjection();
-
-            shader.Use(); /// почему перестановка этой штуки вниз ничего не ломает
-
-            shader.SetMatrix4("model", model);
-            shader.SetMatrix4("view", view);
-            shader.SetMatrix4("projection", projection);
-
-
-            /// binding VAO
-            GL.BindVertexArray(VertexArrayObject);
-
-            // drawing
-            GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
-
-            // unbinding VAO
-            GL.BindVertexArray(0);
+           
 
 
             flor.Draw();
