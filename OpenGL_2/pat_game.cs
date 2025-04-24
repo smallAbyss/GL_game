@@ -156,7 +156,7 @@ namespace OpenGL_2
             GL.Enable(EnableCap.DepthTest);
 
             // camera
-            camera = new Camera(width, height, Vector3.Zero);
+            camera = new Camera(width, height, new Vector3(0f, 1.5f, 0f));
             CursorState = CursorState.Grabbed;
 
             flor = new Surface(shader, camera, "../../../Textures/cat.jpg");

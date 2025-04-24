@@ -50,6 +50,8 @@ namespace OpenGL_2
             {
                 lastPos = new Vector2(position.X, position.Y);
                 firstMove = false;
+                lastPos = new Vector2(mouse.X, mouse.Y + 1);
+
             }
             else
             {
