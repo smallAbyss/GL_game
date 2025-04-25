@@ -9,7 +9,7 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 
 namespace OpenGL_2
 {
-    internal class Camera
+    public class Camera
     {
         private float SPEED = 8f;
         private int SCREENWIDTH;

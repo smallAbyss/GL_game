@@ -24,13 +24,16 @@ namespace OpenGL_2
         int texCoordLocation;
         Shader shader;
         private Stopwatch timer;
-        Camera camera; 
+        Camera camera;
+        Terrain _terrain;
 
         int width;
         int height;
 
 
         Surface flor;
+        Flower flower;
+        Wall wall;
 
         private readonly float[] vertices =
 {
@@ -131,19 +134,20 @@ namespace OpenGL_2
             camera = new Camera(width, height, new Vector3(0f, 1.5f, 0f));
             CursorState = CursorState.Grabbed;
 
+            // objects
+            wall = new Wall(shader, camera, "../../../Textures/moon.png");
+            flower = new Flower(shader, camera, "../../../Textures/box.jpg");
             flor = new Surface(shader, camera, "../../../Textures/cat.jpg");
+            _terrain = new Terrain(100, 100, shader, camera, "../../../Textures/cat.jpg");
+
+
+
         }
 
         protected override void OnUnload()
         {
             base.OnUnload();
-
             shader.Dispose();
-
-            // Deleting VBO
-            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-            GL.DeleteBuffer(VertexBufferObject);
-
         }
 
         protected override void OnUpdateFrame(FrameEventArgs args)
@@ -160,16 +164,20 @@ namespace OpenGL_2
             }
         }
 
-
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             base.OnRenderFrame(e);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             
-           
+
+           // flor.Draw();
+            flower.Draw();
+            //wall.Draw();
 
 
-            flor.Draw();
+
+            
+            _terrain.Draw();
 
             // swap
             SwapBuffers();

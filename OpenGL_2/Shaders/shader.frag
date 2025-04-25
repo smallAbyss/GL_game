@@ -1,12 +1,13 @@
 ﻿#version 330
 
-out vec4 outputColor;
 
-in vec2 texCoord;
-
-uniform sampler2D textr; /// what is this
+in vec3 fragPos;
+out vec4 fragColor;
 
 void main()
 {
-    outputColor = texture(textr, texCoord);
+    float height = fragPos.y / 10.0; 
+    fragColor = mix(vec4(0.1, 0.3, 0.1, 1.0),  
+                   vec4(0.8, 0.6, 0.2, 1.0),  
+                   height);
 }

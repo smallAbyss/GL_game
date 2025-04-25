@@ -30,15 +30,17 @@ namespace OpenGL_2
         private float[] vertices =
         {
             //Position      Texture coordinates
-              0f, 0f,  0f,  0.0f, 1.0f,
-             10f, 0f,  0f,  1.0f, 0.0f,
-              0f, 0f, 10f,  1.0f, 1.0f
+             -20f, 0f, -20f,  0.0f, 0.0f,
+             -20f, 0f,  20f,  1.0f, 0.0f,
+              20f, 0f, -20f,  0.0f, 1.0f,
+              20f, 0f,  20f,  1.0f, 1.0f,
 
         };
 
         private readonly uint[] indices = 
         { 
-            0, 1, 2
+            0, 1, 2,
+            1, 2, 3
         };
 
         public Surface(Shader sh, Camera cam, string texture_path) 
@@ -99,7 +101,7 @@ namespace OpenGL_2
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
 
 
-             shader.Dispose();
+             //shader.Dispose();
         }
 
 
@@ -116,5 +118,162 @@ namespace OpenGL_2
             shader.Dispose();
         }
 
+    }
+
+public struct Vertex
+    {
+        public Vector3 Position;
+        // Можно добавить нормали и текстурные координаты:
+        // public Vector3 Normal;
+        // public Vector2 TexCoord;
+    }
+
+    public class Terrain
+    {
+        private int _vao; // Vertex Array Object
+        private int _vbo; // Vertex Buffer Object
+        private int _ebo; // Element Buffer Object
+        private int _indexCount;
+
+        private float[,] _heights;
+        private int _width, _length;
+
+        private Camera camera;
+        private Shader shader;
+        private Texture texture;
+
+        public Terrain(int width, int length, Shader sh, Camera cam, string texture_path)
+        {
+            texture = new Texture(texture_path);
+            shader = sh;
+            camera = cam;
+
+            _width = width;
+            _length = length;
+            _heights = new float[width, length];
+
+            GenerateHills(); // Генерация высот
+            SetupMesh();     // Создание меша и буферов
+        }
+
+        private void GenerateHills()
+        {
+            float heightScale = 10.0f; // Множитель высоты (было ~0.5, теперь 5.0 - в 10 раз выше)
+
+            for (int x = 0; x < _width; x++)
+            {
+                for (int z = 0; z < _length; z++)
+                {
+                    //// ???
+                    // Нормализованные координаты для плавности
+                    float nx = x / (float)_width * 4f; // Увеличиваем частоту
+                    float nz = z / (float)_length * 4f;
+
+                    // Комбинируем несколько слоёв шума для реалистичности
+                    float noise = (float)(
+                       Math.Sin(nx * 1.5f) * Math.Cos(nz * 1.5f) * 0.8f + // Основные холмы
+                       // Math.Sin(nx * 3.0f) * Math.Cos(nz * 3.0f) * 0.3f +  // Детализация
+                        Math.Sin(nx * 0.7f) * Math.Cos(nz * 0.7f) * 1.2f   // Крупные формы
+                        
+                    );
+
+                    _heights[x, z] = noise * heightScale;
+                }
+            }
+        }
+
+        private void SetupMesh()
+        {
+            // 1. Создаём вершины
+            Vertex[] vertices = new Vertex[_width * _length]; /// а как двойные индексы в indices для EBO передавать?
+            for (int x = 0; x < _width; x++)
+            {
+                for (int z = 0; z < _length; z++)
+                {
+                    vertices[x * _length + z] = new Vertex
+                    {
+                        Position = new Vector3(x, _heights[x, z], z),
+                        // Normal = Vector3.UnitY, // Можно добавить нормали
+                    };
+                }
+            }
+
+            // 2. Создаём индексы для треугольников
+            List<uint> indices = new List<uint>();
+            for (int x = 0; x < _width - 1; x++)
+            {
+                for (int z = 0; z < _length - 1; z++)
+                { 
+                    uint topLeft = (uint)(x * _length + z);
+                    uint topRight = (uint)(x * _length + z + 1);
+                    uint bottomLeft = (uint)((x + 1) * _length + z);
+                    uint bottomRight = (uint)((x + 1) * _length + z + 1);
+
+                    // Первый треугольник (topLeft → bottomLeft → topRight)
+                    indices.Add(topLeft);
+                    indices.Add(bottomLeft);
+                    indices.Add(topRight);
+
+                    // Второй треугольник (topRight → bottomLeft → bottomRight)
+                    indices.Add(topRight);
+                    indices.Add(bottomLeft);
+                    indices.Add(bottomRight);
+                }
+            }
+            _indexCount = indices.Count;
+
+            // 3. Создаём VAO, VBO и EBO
+            _vao = GL.GenVertexArray();
+            GL.BindVertexArray(_vao);
+
+            _vbo = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
+            GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * Vector3.SizeInBytes, vertices, BufferUsageHint.StaticDraw);
+
+            _ebo = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, _indexCount * sizeof(uint), indices.ToArray(), BufferUsageHint.StaticDraw);
+
+            // 4. Указываем атрибуты вершин (позиция)
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, Vector3.SizeInBytes, 0);
+            GL.EnableVertexAttribArray(0);
+
+            // Отвязываем буферы
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0); 
+            GL.BindVertexArray(0);
+        }
+
+        public void Draw()
+        {
+
+            shader.Use();
+            //shader.SetInt("textr", 3);
+
+
+            // matrixes
+            Matrix4 model = Matrix4.Identity;
+            Matrix4 view = camera.GetViewMatrix();
+            Matrix4 projection = camera.GetProjection();
+
+            shader.SetMatrix4("model", model);
+            shader.SetMatrix4("view", view);
+            shader.SetMatrix4("projection", projection);
+
+
+
+            GL.BindVertexArray(_vao);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
+            GL.DrawElements(PrimitiveType.Triangles, _indexCount, DrawElementsType.UnsignedInt, 0);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
+            GL.BindVertexArray(0);
+        }
+
+        public void Dispose()
+        {
+            GL.DeleteBuffer(_vbo);
+            GL.DeleteBuffer(_ebo);
+            GL.DeleteVertexArray(_vao);
+        }
     }
 }
