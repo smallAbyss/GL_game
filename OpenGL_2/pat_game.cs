@@ -136,7 +136,7 @@ namespace OpenGL_2
 
             // objects
             wall = new Wall(shader, camera, "../../../Textures/moon.png");
-            flower = new Flower(shader, camera, "../../../Textures/box.jpg");
+            flower = new Flower(shader, camera, "../../../Textures/grass_1.jpg");
             flor = new Surface(shader, camera, "../../../Textures/cat.jpg");
             _terrain = new Terrain(100, 100, shader, camera, "../../../Textures/cat.jpg");
 

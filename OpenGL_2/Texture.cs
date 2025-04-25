@@ -31,7 +31,7 @@ namespace OpenGL_2
             ImageResult image = ImageResult.FromStream(File.OpenRead(tex_path), ColorComponents.RedGreenBlueAlpha);
             GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, image.Width, image.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, image.Data);
 
-
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
             // generate mipmaps
             GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
         }

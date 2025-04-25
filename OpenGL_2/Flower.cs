@@ -140,7 +140,7 @@ namespace OpenGL_2
         public void Draw()
         {
             shader.Use();
-            shader.SetInt("textr", texture.GetActiveTextureSocketNumber() - 2);
+            shader.SetInt("textr", 1);
 
 
             // matrixes

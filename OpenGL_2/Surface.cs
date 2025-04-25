@@ -134,6 +134,7 @@ public struct Vertex
         private int _vbo; // Vertex Buffer Object
         private int _ebo; // Element Buffer Object
         private int _indexCount;
+        int _texture_vbo;
 
         private float[,] _heights;
         private int _width, _length;
@@ -141,6 +142,8 @@ public struct Vertex
         private Camera camera;
         private Shader shader;
         private Texture texture;
+
+        private const int TEXTURE_COUNT = 25;
 
         public Terrain(int width, int length, Shader sh, Camera cam, string texture_path)
         {
@@ -158,7 +161,7 @@ public struct Vertex
 
         private void GenerateHills()
         {
-            float heightScale = 10.0f; // Множитель высоты (было ~0.5, теперь 5.0 - в 10 раз выше)
+            float heightScale = 10.0f; // Множитель высоты 
 
             for (int x = 0; x < _width; x++)
             {
@@ -198,6 +201,16 @@ public struct Vertex
                 }
             }
 
+            Vector2[] texture_vertices = new Vector2[_width * _length]; /// а как двойные индексы в indices для EBO передавать?
+            for (int x = 0; x < _width; x++)
+            {
+                for (int z = 0; z < _length; z++)
+                { 
+                int texIdx = (x * _length + z);
+                texture_vertices[x * _length + z] = new Vector2(x / (float)(_width - 1) * TEXTURE_COUNT, z / (float)(_length - 1) * TEXTURE_COUNT);
+                }
+            }
+
             // 2. Создаём индексы для треугольников
             List<uint> indices = new List<uint>();
             for (int x = 0; x < _width - 1; x++)
@@ -230,13 +243,25 @@ public struct Vertex
             GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
             GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * Vector3.SizeInBytes, vertices, BufferUsageHint.StaticDraw);
 
+            _texture_vbo = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _texture_vbo);
+            GL.BufferData(BufferTarget.ArrayBuffer, texture_vertices.Length * Vector2.SizeInBytes, texture_vertices, BufferUsageHint.StaticDraw);
+
             _ebo = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, _ebo);
             GL.BufferData(BufferTarget.ElementArrayBuffer, _indexCount * sizeof(uint), indices.ToArray(), BufferUsageHint.StaticDraw);
 
+
             // 4. Указываем атрибуты вершин (позиция)
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, Vector3.SizeInBytes, 0);
             GL.EnableVertexAttribArray(0);
+
+            // 5. Указываем атрибуты вершин (текстура)
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _texture_vbo);
+            int texCoordLocation = shader.GetAttribLocation("aTexCoord");
+            GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, Vector2.SizeInBytes, 0);
+            GL.EnableVertexAttribArray(texCoordLocation);
 
             // Отвязываем буферы
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
@@ -248,7 +273,7 @@ public struct Vertex
         {
 
             shader.Use();
-            //shader.SetInt("textr", 3);
+            shader.SetInt("textr", 1);
 
 
             // matrixes
