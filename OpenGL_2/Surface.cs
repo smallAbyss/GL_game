@@ -15,8 +15,10 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
 
+
 namespace OpenGL_2
 {
+
     internal class Surface
     {
         int VBO, VAO, EBO;
@@ -144,7 +146,10 @@ public struct Vertex
         private Texture texture;
 
         private const int TEXTURE_COUNT = 25;
-
+        float Lerp(float a, float b, float t)
+        {
+            return a + (b - a) * t;
+        }
         public Terrain(int width, int length, Shader sh, Camera cam, string texture_path)
         {
             texture = new Texture(texture_path);
@@ -292,6 +297,43 @@ public struct Vertex
             GL.DrawElements(PrimitiveType.Triangles, _indexCount, DrawElementsType.UnsignedInt, 0);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
             GL.BindVertexArray(0);
+        }
+
+        public float GetTerrainHeight(float x, float z)
+        {
+            // Переводим мировые координаты в координаты сетки
+            float gridX = x / (_width - 1) * (_width - 1);
+            float gridZ = z / (_length - 1) * (_length - 1);
+
+            int x0 = (int)MathF.Floor(gridX);
+            int z0 = (int)MathF.Floor(gridZ);
+            int x1 = x0 + 1;
+            int z1 = z0 + 1;
+
+            // Краевые случаи: за пределами карты
+            x0 = Math.Clamp(x0, 0, _width - 1);
+            x1 = Math.Clamp(x1, 0, _width - 1);
+            z0 = Math.Clamp(z0, 0, _length - 1);
+            z1 = Math.Clamp(z1, 0, _length - 1);
+
+            // Дробные части (насколько мы смещены внутри квадратика)
+            float tx = gridX - x0;
+            float tz = gridZ - z0;
+
+            // Высоты четырёх углов квадрата
+            float h00 = _heights[x0, z0]; // top-left
+            float h10 = _heights[x1, z0]; // top-right
+            float h01 = _heights[x0, z1]; // bottom-left
+            float h11 = _heights[x1, z1]; // bottom-right
+
+            // Билинейная интерполяция
+            float height = Lerp(
+                Lerp(h00, h10, tx),
+                Lerp(h01, h11, tx),
+                tz
+            );
+
+            return height;
         }
 
         public void Dispose()

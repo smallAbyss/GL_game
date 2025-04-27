@@ -23,9 +23,11 @@ namespace OpenGL_2
 
         int texCoordLocation;
         Shader shader;
+        Shader shader1;
         private Stopwatch timer;
         Camera camera;
         Terrain _terrain;
+        FlowerField flowerField;
 
         int width;
         int height;
@@ -119,6 +121,7 @@ namespace OpenGL_2
         {
             base.OnLoad();
             shader = new Shader("../../../Shaders/shader.vert", "../../../Shaders/shader.frag");
+            shader1 = new Shader("../../../Shaders/fl.vert", "../../../Shaders/fl.frag");
 
             // set backroundColor
             GL.ClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -141,6 +144,11 @@ namespace OpenGL_2
             _terrain = new Terrain(100, 100, shader, camera, "../../../Textures/cat.jpg");
 
 
+            // После загрузки OpenTK окна
+            flowerField = new FlowerField();
+                                                              // Вместо flowerField.GenerateTestFlowers(camera, shader1);
+            //flowerField.GenerateFlowers(camera, shader1, _terrain, 100, 100, 100); // 100 цветков
+            flowerField.GenerateFlowers(camera, shader1, _terrain, 10000, 100, 100);
 
         }
 
@@ -167,17 +175,21 @@ namespace OpenGL_2
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             base.OnRenderFrame(e);
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            
 
-           // flor.Draw();
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            _terrain.Draw();
+
+
+            // flor.Draw();
+            flowerField.Draw();
             flower.Draw();
             //wall.Draw();
 
 
 
+
+
             
-            _terrain.Draw();
 
             // swap
             SwapBuffers();
