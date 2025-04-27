@@ -39,7 +39,7 @@ namespace OpenGL_2
         public Matrix4 GetProjection()
         {
             return
-            Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(60f), SCREENWIDTH / SCREENHEIGHT, 0.1f, 100f);
+            Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(60f), (float)SCREENWIDTH / (float)SCREENHEIGHT, 0.1f, 100f);
         }
 
         public void InputController(KeyboardState input, MouseState mouse,
@@ -48,11 +48,10 @@ namespace OpenGL_2
         {
             if (firstMove)
             {
-                lastPos = new Vector2(position.X, position.Y);
+                lastPos = new Vector2(mouse.X, mouse.Y);
                 firstMove = false;
-                lastPos = new Vector2(mouse.X, mouse.Y + 1);
-
             }
+
             else
             {
                 var deltaX = mouse.X - lastPos.X;

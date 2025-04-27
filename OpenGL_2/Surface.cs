@@ -185,7 +185,7 @@ public struct Vertex
                         
                     );
 
-                    _heights[x, z] = noise * heightScale;
+                    _heights[x, z] = noise * heightScale * 1;
                 }
             }
         }
@@ -302,8 +302,8 @@ public struct Vertex
         public float GetTerrainHeight(float x, float z)
         {
             // Переводим мировые координаты в координаты сетки
-            float gridX = x / (_width - 1) * (_width - 1);
-            float gridZ = z / (_length - 1) * (_length - 1);
+            float gridX = x;
+            float gridZ = z;
 
             int x0 = (int)MathF.Floor(gridX);
             int z0 = (int)MathF.Floor(gridZ);

@@ -12,7 +12,7 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 
 namespace OpenGL_2
 {
-    public class Shader
+    public class Shader : IDisposable
     {
         public readonly int Handle; 
         private bool disposedValue = false;
@@ -105,6 +105,11 @@ namespace OpenGL_2
         public int GetAttribLocation(string attribName)
         {
             return GL.GetAttribLocation(Handle, attribName);
+        }
+
+        private int GetUniformLocation(string name)
+        {
+            return GL.GetUniformLocation(Handle, name);
         }
 
         public void Dispose()

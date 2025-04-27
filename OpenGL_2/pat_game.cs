@@ -146,9 +146,13 @@ namespace OpenGL_2
 
             // После загрузки OpenTK окна
             flowerField = new FlowerField();
-                                                              // Вместо flowerField.GenerateTestFlowers(camera, shader1);
+            // Вместо flowerField.GenerateTestFlowers(camera, shader1);
             //flowerField.GenerateFlowers(camera, shader1, _terrain, 100, 100, 100); // 100 цветков
-            flowerField.GenerateFlowers(camera, shader1, _terrain, 10000, 100, 100);
+            //flowerField.GenerateFlowers( _terrain, 3000, 100, 100);
+
+            flowerField = new FlowerField();
+            flowerField.GenerateFlowers(_terrain, 10000,  100, 100);
+            //flowerField.GenerateFlowers(camera, shader1, _terrain, 1000, 100, 100);
 
         }
 
@@ -181,8 +185,9 @@ namespace OpenGL_2
 
 
             // flor.Draw();
-            flowerField.Draw();
-            flower.Draw();
+            flowerField.Draw(shader1, camera);
+            //flowerField.Draw();
+            //flower.Draw();
             //wall.Draw();
 
 

@@ -104,6 +104,10 @@ namespace OpenGL_2
             {
                 vertices[i] += 0.25f;
             }
+            for (int i = 1; i < vertices.Length; i += 5)
+            {
+                vertices[i] -= 2.0f;
+            }
             shader = sh;
             camera = cam;
 

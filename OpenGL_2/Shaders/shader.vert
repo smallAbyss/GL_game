@@ -15,5 +15,5 @@ void main()
 	worldPos = vec3( vec4(aPos, 1.0) * model); // get position in world coordinate
 	texCoord = vec2(aTexCoord.x, aTexCoord.y);
 
-    gl_Position = vec4(aPos, 1.0) * model * view * projection;
+    gl_Position =  vec4(aPos, 1.0) * model * view * projection;
 }   
