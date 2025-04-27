@@ -29,6 +29,8 @@ namespace OpenGL_2
         Terrain _terrain;
         FlowerField flowerField;
 
+        Model model;
+
         int width;
         int height;
 
@@ -144,16 +146,10 @@ namespace OpenGL_2
             _terrain = new Terrain(100, 100, shader, camera, "../../../Textures/cat.jpg");
 
 
-            // После загрузки OpenTK окна
             flowerField = new FlowerField();
-            // Вместо flowerField.GenerateTestFlowers(camera, shader1);
-            //flowerField.GenerateFlowers(camera, shader1, _terrain, 100, 100, 100); // 100 цветков
-            //flowerField.GenerateFlowers( _terrain, 3000, 100, 100);
-
-            flowerField = new FlowerField();
-            flowerField.GenerateFlowers(_terrain, 10000,  100, 100);
-            //flowerField.GenerateFlowers(camera, shader1, _terrain, 1000, 100, 100);
-
+            flowerField.GenerateFlowers(_terrain, 5000,  100, 100);
+           // model = new Model();
+            //model.LoadModel("C:/Users/labyss/Downloads/uploads_files_4232500_Coreopsis+Flower.obj");
         }
 
         protected override void OnUnload()
@@ -187,9 +183,9 @@ namespace OpenGL_2
             // flor.Draw();
             flowerField.Draw(shader1, camera);
             //flowerField.Draw();
-            //flower.Draw();
+            flower.Draw();
             //wall.Draw();
-
+            //model.Draw();
 
 
 
@@ -207,6 +203,7 @@ namespace OpenGL_2
             GL.Viewport(0, 0, e.Width, e.Height);
             this.width = e.Width;
             this.height = e.Height;
+            camera.UpdateDim(this.width, this.height);
         }
 
     }

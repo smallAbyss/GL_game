@@ -164,6 +164,21 @@ public struct Vertex
             SetupMesh();     // Создание меша и буферов
         }
 
+        public Vector3 GetTerrainNormal(float x, float z)
+        {
+            // Простейший способ - через соседние точки
+            float offset = 0.1f;
+            float y1 = GetTerrainHeight(x - offset, z);
+            float y2 = GetTerrainHeight(x + offset, z);
+            float y3 = GetTerrainHeight(x, z - offset);
+            float y4 = GetTerrainHeight(x, z + offset);
+
+            Vector3 tangent = new Vector3(2 * offset, y2 - y1, 0);
+            Vector3 bitangent = new Vector3(0, y4 - y3, 2 * offset);
+
+            return Vector3.Cross(tangent, bitangent).Normalized();
+        }
+
         private void GenerateHills()
         {
             float heightScale = 10.0f; // Множитель высоты 

@@ -60,3 +60,8 @@ C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\obj\Debug\net8.0\OpenGL_2.pdb
 C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\obj\Debug\net8.0\OpenGL_2.genruntimeconfig.cache
 C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\obj\Debug\net8.0\ref\OpenGL_2.dll
 C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\bin\Debug\net8.0\StbImageSharp.dll
+C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\bin\Debug\net8.0\AssimpNet.dll
+C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\bin\Debug\net8.0\runtimes\linux-x64\native\libassimp.so
+C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\bin\Debug\net8.0\runtimes\osx-x64\native\libassimp.dylib
+C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\bin\Debug\net8.0\runtimes\win-x64\native\assimp.dll
+C:\Users\labyss\source\repos\KG1\GL_game\OpenGL_2\bin\Debug\net8.0\runtimes\win-x86\native\assimp.dll

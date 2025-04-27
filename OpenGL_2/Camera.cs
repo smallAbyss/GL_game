@@ -100,6 +100,12 @@ namespace OpenGL_2
             InputController(input, mouse, e);
         }
 
+        public void UpdateDim(int width, int height)
+        {
+            SCREENWIDTH = width;
+            SCREENHEIGHT = height;
+        }
+
         private void UpdateVectors()
         {
           

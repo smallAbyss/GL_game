@@ -2,6 +2,7 @@
 using OpenTK.Mathematics;
 using System;
 using System.Collections.Generic;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace OpenGL_2
 {
@@ -28,28 +29,29 @@ namespace OpenGL_2
 
         private bool initialized = false;
 
-        
+
         public void GenerateFlowers(Terrain terrain, int count, float terrainWidth, float terrainLength)
         {
             Random random = new Random();
             for (int i = 0; i < count; i++)
             {
-
                 float x = (float)(random.NextDouble() * terrainWidth);
                 float z = (float)(random.NextDouble() * terrainLength);
                 float y = terrain.GetTerrainHeight(x, z);
+
+
+                // без поврота на нормаль
                 
                 float rotation = (float)(random.NextDouble() * 360f);
                 float scale = 0.5f;
-               // Console.WriteLine($"Flower at X: {x}, Y: {y}, Z: {z}");
+
 
                 Matrix4 model = Matrix4.CreateScale(scale) * Matrix4.CreateRotationY(MathHelper.DegreesToRadians(rotation)) * Matrix4.CreateTranslation(new Vector3(x, y, z));
-
+                
                 flowers.Add(new FlowerInstance
                 {
                     ModelMatrix = model,
-                    //Color = new Vector3(1.0f, 0.8f, 0.2f)
-                    Color = new Vector3((float)random.NextDouble(), (float)random.NextDouble(), (float)random.NextDouble())
+                    Color = new Vector3((float)255 / 255.0f, ((float)random.NextDouble() * (75) + 180 ) / 255.0f, ((float)random.NextDouble() * 255) / 255.0f)
                 });
             }
             Initialize();
@@ -106,7 +108,7 @@ namespace OpenGL_2
             }
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, instanceVbo);
-            GL.BufferData(BufferTarget.ArrayBuffer, instanceData.Count * sizeof(float), instanceData.ToArray(), BufferUsageHint.DynamicDraw);
+            GL.BufferData(BufferTarget.ArrayBuffer, instanceData.Count * sizeof(float), instanceData.ToArray(), BufferUsageHint.StaticDraw);
 
 
             int stride = (16 + 3) * sizeof(float);
