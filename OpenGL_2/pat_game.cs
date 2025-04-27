@@ -147,6 +147,7 @@ namespace OpenGL_2
 
 
             flowerField = new FlowerField();
+            flowerField.LoadFlowerModel("C:/Users/labyss/Downloads/uploads_files_4232500_Coreopsis+Flower.obj");
             flowerField.GenerateFlowers(_terrain, 5000,  100, 100);
            // model = new Model();
             //model.LoadModel("C:/Users/labyss/Downloads/uploads_files_4232500_Coreopsis+Flower.obj");
