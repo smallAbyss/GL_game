@@ -17,11 +17,6 @@ namespace OpenGL_2
 {
     internal class Game_pat : GameWindow
     {
-        int VertexBufferObject;
-        int VertexArrayObject;
-        int ElementBufferObject;
-
-        int texCoordLocation;
         Shader shader;
         Shader shader1;
         private Stopwatch timer;
@@ -35,81 +30,9 @@ namespace OpenGL_2
         int height;
 
 
-        Surface flor;
         Flower flower;
-        Wall wall;
 
-        private readonly float[] vertices =
-{
-       //Position            Texture coordinates
-       -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-        0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-       -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-       -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-
-       -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-       -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-       -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-
-       -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-       -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-       -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-       -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-       -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-       -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-       -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-       -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-       -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-
-       -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-       -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-       -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-
-
-       0f, 0f, 0f, 0.0f, 1.0f,
-       10f, 0f, 0f, 1.0f, 1.0f,
-       0f, 0f, 10f, 1.0f, 0.0f,
-   };
-
-        private readonly uint[] indices = {  // note that we start from 0!
-       0, 1, 2,
-       3, 4, 5,
-
-       6, 7, 8,
-       9, 10, 11,
-
-       12, 13, 14,
-       15, 16, 17,
-
-       18, 19, 20,
-       21, 22, 23,
-
-       24, 25, 26,
-       27, 28, 29,
-
-       30, 31, 32,
-       33, 34, 35
-   };
-
+     
 
 
         public Game_pat(int width, int height, string title) : base(GameWindowSettings.Default,
@@ -126,7 +49,7 @@ namespace OpenGL_2
             shader1 = new Shader("../../../Shaders/fl.vert", "../../../Shaders/fl.frag");
 
             // set backroundColor
-            GL.ClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+            GL.ClearColor(66.0f / 255.0f, 170.0f / 255.0f, 255.0f / 255.0f, 1.0f);
 
             // timers
             timer = new Stopwatch();
@@ -140,16 +63,16 @@ namespace OpenGL_2
             CursorState = CursorState.Grabbed;
 
             // objects
-            wall = new Wall(shader, camera, "../../../Textures/moon.png");
-            flower = new Flower(shader, camera, "../../../Textures/grass_1.jpg");
-            flor = new Surface(shader, camera, "../../../Textures/cat.jpg");
-            _terrain = new Terrain(100, 100, shader, camera, "../../../Textures/cat.jpg");
+            flower = new Flower(shader, camera, "../../../Textures/box.jpg");
+            _terrain = new Terrain(100, 100, shader, camera, "../../../Textures/grass_1.jpg");
+
 
 
             flowerField = new FlowerField();
-            flowerField.GenerateFlowers(_terrain, 5000,  100, 100);
-           // model = new Model();
-            //model.LoadModel("C:/Users/labyss/Downloads/uploads_files_4232500_Coreopsis+Flower.obj");
+            flowerField.GenerateFlowers(_terrain, 500000,  100, 100, "../../../Textures/fle.png");
+
+            GL.Enable(EnableCap.Blend);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
         }
 
         protected override void OnUnload()
@@ -178,19 +101,8 @@ namespace OpenGL_2
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             _terrain.Draw();
-
-
-            // flor.Draw();
             flowerField.Draw(shader1, camera);
-            //flowerField.Draw();
             flower.Draw();
-            //wall.Draw();
-            //model.Draw();
-
-
-
-
-            
 
             // swap
             SwapBuffers();

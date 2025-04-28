@@ -16,22 +16,44 @@ namespace OpenGL_2
         private int instanceVbo;
 
         private readonly float[] vertices = {
-            -0.5f, 0f, -0.5f,
-             0.5f, 0f, -0.5f,
-             0.5f, 0f,  0.5f,
-            -0.5f, 0f,  0.5f
+            // Горизонтальный квадрат (XY)
+            -0.5f, 0f, -0.5f, 0f, 0f,
+             0.5f, 0f, -0.5f, 1f, 0f,
+             0.5f, 0f,  0.5f, 1f, 1f,
+            -0.5f, 0f,  0.5f, 0f, 1f,
+
+            // Вертикальный квадрат вдоль X (YZ)
+            0f, -0.0f, -0.5f, 0f, 0f,
+            0f,  1.0f, -0.5f, 0f, 1f,
+            0f,  1.0f,  0.5f, 1f, 1f,
+            0f, -0.0f,  0.5f, 1f, 0f,
+
+            // Вертикальный квадрат вдоль Z (XY повернут)
+            -0.5f, -0.0f, 0f, 0f, 0f,
+             0.5f, -0.0f, 0f, 1f, 0f,
+             0.5f,  1.0f, 0f, 1f, 1f,
+            -0.5f,  1.0f, 0f, 0f, 1f
         };
 
         private readonly uint[] indices = {
-            0, 1, 2,
-            2, 3, 0
+            // Горизонтальный квадрат
+            //0, 1, 2, 2, 3, 0,
+
+            // Вертикальный квадрат вдоль X
+            4, 5, 6, 6, 7, 4,
+
+            // Вертикальный квадрат вдоль Z
+            8, 9, 10, 10, 11, 8
         };
 
         private bool initialized = false;
 
 
-        public void GenerateFlowers(Terrain terrain, int count, float terrainWidth, float terrainLength)
+        public void GenerateFlowers(Terrain terrain, int count, float terrainWidth, float terrainLength, string path)
         {
+
+
+            Texture texture = new Texture(path);
             Random random = new Random();
             for (int i = 0; i < count; i++)
             {
@@ -74,8 +96,12 @@ namespace OpenGL_2
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, ebo);
             GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
 
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
             GL.EnableVertexAttribArray(0);
+
+            GL.VertexAttribPointer(6, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
+            GL.EnableVertexAttribArray(6);
+
 
             //UpdateInstanceBuffer();
 
@@ -134,6 +160,7 @@ namespace OpenGL_2
         {
 
             shader.Use();
+            shader.SetInt("texture0", 2);
             shader.SetMatrix4("view", camera.GetViewMatrix());
             shader.SetMatrix4("projection", camera.GetProjection());
 

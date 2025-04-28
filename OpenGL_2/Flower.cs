@@ -144,7 +144,7 @@ namespace OpenGL_2
         public void Draw()
         {
             shader.Use();
-            shader.SetInt("textr", 1);
+            shader.SetInt("textr", 0);
 
 
             // matrixes

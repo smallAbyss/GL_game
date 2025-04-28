@@ -91,6 +91,9 @@ namespace OpenGL_2
             {
                 position -= Vector3.UnitY * SPEED * (float)e.Time;
             }
+            float x = position.X / 100.0f * 4;
+            float z = position.Z / 100.0f * 4;
+            position.Y = (float)(Math.Sin(x * 1.5f) * Math.Cos(z * 1.5f) * 0.8f + Math.Sin(x * 0.7f) * Math.Cos(z * 0.7f) * 1.2f) * 10.0f + 1.7f;
 
             UpdateVectors();
         }
