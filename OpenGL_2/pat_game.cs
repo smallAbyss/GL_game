@@ -24,7 +24,6 @@ namespace OpenGL_2
         Terrain _terrain;
         FlowerField flowerField;
 
-        Model model;
 
         int width;
         int height;
@@ -100,9 +99,10 @@ namespace OpenGL_2
             base.OnRenderFrame(e);
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            flower.Draw();
             _terrain.Draw();
             flowerField.Draw(shader1, camera);
-            flower.Draw();
+            
 
             // swap
             SwapBuffers();

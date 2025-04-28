@@ -103,9 +103,6 @@ namespace OpenGL_2
             GL.EnableVertexAttribArray(6);
 
 
-            //UpdateInstanceBuffer();
-
-
             GL.BindVertexArray(vao);
             List<float> instanceData = new List<float>();
 
@@ -116,16 +113,6 @@ namespace OpenGL_2
                 instanceData.Add(flower.ModelMatrix.M12); instanceData.Add(flower.ModelMatrix.M22); instanceData.Add(flower.ModelMatrix.M32); instanceData.Add(flower.ModelMatrix.M42);
                 instanceData.Add(flower.ModelMatrix.M13); instanceData.Add(flower.ModelMatrix.M23); instanceData.Add(flower.ModelMatrix.M33); instanceData.Add(flower.ModelMatrix.M43);
                 instanceData.Add(flower.ModelMatrix.M14); instanceData.Add(flower.ModelMatrix.M14); instanceData.Add(flower.ModelMatrix.M34); instanceData.Add(flower.ModelMatrix.M44);
-
-                /*
-                Console.WriteLine("///////////////////////////////");
-                Console.WriteLine($"{flower.ModelMatrix.M11}\t{flower.ModelMatrix.M12}\t{flower.ModelMatrix.M13}\t{flower.ModelMatrix.M14}");
-                Console.WriteLine($"{flower.ModelMatrix.M21}\t{flower.ModelMatrix.M22}\t{flower.ModelMatrix.M23}\t{flower.ModelMatrix.M24}");
-                Console.WriteLine($"{flower.ModelMatrix.M31}\t{flower.ModelMatrix.M32}\t{flower.ModelMatrix.M33}\t{flower.ModelMatrix.M34}");
-                Console.WriteLine($"{flower.ModelMatrix.M41}\t{flower.ModelMatrix.M42}\t{flower.ModelMatrix.M43}\t{flower.ModelMatrix.M44}");
-                Console.WriteLine("///////////////////////////////");
-                */
-
 
 
                 instanceData.Add(flower.Color.X);

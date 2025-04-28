@@ -10,6 +10,8 @@ layout (location = 6) in vec2 aTexCoord;
 
 
 out vec2 texCoord;
+out vec3 cord;
+
 
 uniform mat4 view;
 uniform mat4 projection;
@@ -17,9 +19,9 @@ uniform mat4 projection;
 void main()
 {
     mat4 model = mat4(instanceColumn0, instanceColumn1, instanceColumn2, instanceColumn3);
-   gl_Position = vec4(aPos, 1.0) * model * view * projection;
+    gl_Position = vec4(aPos, 1.0) * model * view * projection;
+	cord = vec3(vec4(aPos, 1.0) * model);
 
 
-    //fColor = instanceColor;
     texCoord = vec2(aTexCoord.x, aTexCoord.y);
 }

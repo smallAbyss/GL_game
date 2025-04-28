@@ -19,115 +19,11 @@ using static System.Formats.Asn1.AsnWriter;
 namespace OpenGL_2
 {
 
-    internal class Surface
-    {
-        int VBO, VAO, EBO;
-
-        int texCoordLocation;
-
-        Shader shader;
-        Camera camera;
-        Texture texture;
-
-        private float[] vertices =
-        {
-            //Position      Texture coordinates
-             -20f, 0f, -20f,  0.0f, 0.0f,
-             -20f, 0f,  20f,  1.0f, 0.0f,
-              20f, 0f, -20f,  0.0f, 1.0f,
-              20f, 0f,  20f,  1.0f, 1.0f,
-
-        };
-
-        private readonly uint[] indices = 
-        { 
-            0, 1, 2,
-            1, 2, 3
-        };
-
-        public Surface(Shader sh, Camera cam, string texture_path) 
-        {
-            shader = sh;
-            camera = cam;
-
-            shader.Use();
-            
-            VBO = GL.GenBuffer();
-            GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
-            GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
-            VAO = GL.GenVertexArray();
-            GL.BindVertexArray(VAO);
-            EBO = GL.GenBuffer();
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
-            GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
-
-            // vertex attributes: position
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
-            GL.EnableVertexAttribArray(0);
-
-            // vertex attributes: texture position
-            texCoordLocation = shader.GetAttribLocation("aTexCoord");
-            GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
-            GL.EnableVertexAttribArray(texCoordLocation);
-
-            // unbinding
-            GL.BindBuffer(BufferTarget.ArrayBuffer, 0); //VBO
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0); // EBO
-            GL.BindVertexArray(0); // VAO
-
-            // textures 
-            //texture = new Texture("../../../Textures/cat.jpg");
-            texture = new Texture(texture_path);
-        }
-
-        public void Draw()
-        {
-            shader.Use();
-            shader.SetInt("textr", texture.GetActiveTextureSocketNumber() - 1);
-
-
-            // matrixes
-            Matrix4 model = Matrix4.Identity;
-            Matrix4 view = camera.GetViewMatrix();
-            Matrix4 projection = camera.GetProjection();
-
-            shader.SetMatrix4("model", model);
-            shader.SetMatrix4("view", view);
-            shader.SetMatrix4("projection", projection);
-
-
-            GL.BindVertexArray(VAO);
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
-            GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
-            GL.BindVertexArray(0);
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
-
-
-             //shader.Dispose();
-        }
-
-
-
-        ~Surface() /// а он и не вызывается блин
-        {
-            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
-            GL.BindVertexArray(0);
-            GL.DeleteBuffer(VBO);
-            GL.DeleteBuffer(EBO);
-            GL.DeleteBuffer(VAO);
-
-            shader.Dispose();
-        }
-
-    }
+    
 
 public struct Vertex
     {
         public Vector3 Position;
-        // Можно добавить нормали и текстурные координаты:
-        // public Vector3 Normal;
-        // public Vector2 TexCoord;
     }
 
     public class Terrain
@@ -161,7 +57,7 @@ public struct Vertex
             _heights = new float[width, length];
 
             GenerateHills(); // Генерация высот
-            SetupMesh();     // Создание меша и буферов
+            SetupMesh();     // Создание буферов
         }
 
         public Vector3 GetTerrainNormal(float x, float z)
@@ -187,16 +83,14 @@ public struct Vertex
             {
                 for (int z = 0; z < _length; z++)
                 {
-                    //// ???
+                   
                     // Нормализованные координаты для плавности
                     float nx = x / (float)_width * 4f; // Увеличиваем частоту
                     float nz = z / (float)_length * 4f;
 
-                    // Комбинируем несколько слоёв шума для реалистичности
                     float noise = (float)(
-                       Math.Sin(nx * 1.5f) * Math.Cos(nz * 1.5f) * 0.8f + // Основные холмы
-                       // Math.Sin(nx * 3.0f) * Math.Cos(nz * 3.0f) * 0.3f +  // Детализация
-                        Math.Sin(nx * 0.7f) * Math.Cos(nz * 0.7f) * 1.2f   // Крупные формы
+                       Math.Sin(nx * 1.5f) * Math.Cos(nz * 1.5f) * 0.8f + 
+                        Math.Sin(nx * 0.7f) * Math.Cos(nz * 0.7f) * 1.2f   
                         
                     );
 
@@ -207,8 +101,8 @@ public struct Vertex
 
         private void SetupMesh()
         {
-            // 1. Создаём вершины
-            Vertex[] vertices = new Vertex[_width * _length]; /// а как двойные индексы в indices для EBO передавать?
+            // Создаём вершины
+            Vertex[] vertices = new Vertex[_width * _length]; /// а как двойные индексы в indices для EBO передавать? -  а никак
             for (int x = 0; x < _width; x++)
             {
                 for (int z = 0; z < _length; z++)
@@ -216,12 +110,11 @@ public struct Vertex
                     vertices[x * _length + z] = new Vertex
                     {
                         Position = new Vector3(x, _heights[x, z], z),
-                        // Normal = Vector3.UnitY, // Можно добавить нормали
                     };
                 }
             }
 
-            Vector2[] texture_vertices = new Vector2[_width * _length]; /// а как двойные индексы в indices для EBO передавать?
+            Vector2[] texture_vertices = new Vector2[_width * _length]; 
             for (int x = 0; x < _width; x++)
             {
                 for (int z = 0; z < _length; z++)
@@ -230,8 +123,9 @@ public struct Vertex
                 texture_vertices[x * _length + z] = new Vector2(x / (float)(_width - 1) * TEXTURE_COUNT, z / (float)(_length - 1) * TEXTURE_COUNT);
                 }
             }
+            ////// ***
 
-            // 2. Создаём индексы для треугольников
+            // Создаём индексы для треугольников
             List<uint> indices = new List<uint>();
             for (int x = 0; x < _width - 1; x++)
             {
@@ -242,12 +136,12 @@ public struct Vertex
                     uint bottomLeft = (uint)((x + 1) * _length + z);
                     uint bottomRight = (uint)((x + 1) * _length + z + 1);
 
-                    // Первый треугольник (topLeft → bottomLeft → topRight)
+                    // Первый треугольник (topLeft - bottomLeft - topRight)
                     indices.Add(topLeft);
                     indices.Add(bottomLeft);
                     indices.Add(topRight);
 
-                    // Второй треугольник (topRight → bottomLeft → bottomRight)
+                    // Второй треугольник (topRight - bottomLeft - bottomRight)
                     indices.Add(topRight);
                     indices.Add(bottomLeft);
                     indices.Add(bottomRight);
@@ -255,7 +149,7 @@ public struct Vertex
             }
             _indexCount = indices.Count;
 
-            // 3. Создаём VAO, VBO и EBO
+            // Создаём VAO, VBO и EBO
             _vao = GL.GenVertexArray();
             GL.BindVertexArray(_vao);
 
@@ -272,12 +166,12 @@ public struct Vertex
             GL.BufferData(BufferTarget.ElementArrayBuffer, _indexCount * sizeof(uint), indices.ToArray(), BufferUsageHint.StaticDraw);
 
 
-            // 4. Указываем атрибуты вершин (позиция)
+            //  Указываем атрибуты вершин (позиция)
             GL.BindBuffer(BufferTarget.ArrayBuffer, _vbo);
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, Vector3.SizeInBytes, 0);
             GL.EnableVertexAttribArray(0);
 
-            // 5. Указываем атрибуты вершин (текстура)
+            // Указываем атрибуты вершин (текстура)
             GL.BindBuffer(BufferTarget.ArrayBuffer, _texture_vbo);
             int texCoordLocation = shader.GetAttribLocation("aTexCoord");
             GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, Vector2.SizeInBytes, 0);
@@ -314,6 +208,7 @@ public struct Vertex
             GL.BindVertexArray(0);
         }
 
+        /// ** sin
         public float GetTerrainHeight(float x, float z)
         {
             // Переводим мировые координаты в координаты сетки

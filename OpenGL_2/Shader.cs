@@ -21,7 +21,7 @@ namespace OpenGL_2
         {
             // creating individual shaders
             int VertexShader, FragmentShader; // можно заменить на unsigned/Gluint, про разницу в обсидиане
-            string VertexShaderSource = File.ReadAllText(vertexPath); // как это блин работает
+            string VertexShaderSource = File.ReadAllText(vertexPath);
             string FragmentShaderSource = File.ReadAllText(fragmentPath);
 
             VertexShader = GL.CreateShader(ShaderType.VertexShader);
@@ -118,7 +118,7 @@ namespace OpenGL_2
             GC.SuppressFinalize(this);
         }
 
-        public void SetInt(string name, int value) /// делалось для установки тектсруного слота
+        public void SetInt(string name, int value) /// делалось для установки текстурного слота
         {
             GL.UseProgram(Handle); 
             int location = GL.GetUniformLocation(Handle, name);
